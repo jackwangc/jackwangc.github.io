@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    save_scroll: false,
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    search: {
+      root: '/',
+      path: ''
+    },
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="mgo 驱动使用指南 mgo 是 MongoDB 的 go 语言驱动，golang 网站的数据存储就是用的 MongoDB + mgo  操作123456789101112131415161718go get gopkg.in/mgo.v2     # 安装----import(                    # 1.导入 mgo 包&amp;quot;gopkg.in/mgo.v2&amp;quot;&amp;">
+<meta name="keywords" content="数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mgo 驱动使用指南">
+<meta property="og:url" content="http://yoursite.com/2017/08/31/2017083106/index.html">
+<meta property="og:site_name" content="叶落 知秋">
+<meta property="og:description" content="mgo 驱动使用指南 mgo 是 MongoDB 的 go 语言驱动，golang 网站的数据存储就是用的 MongoDB + mgo  操作123456789101112131415161718go get gopkg.in/mgo.v2     # 安装----import(                    # 1.导入 mgo 包&amp;quot;gopkg.in/mgo.v2&amp;quot;&amp;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-11-11T04:18:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mgo 驱动使用指南">
+<meta name="twitter:description" content="mgo 驱动使用指南 mgo 是 MongoDB 的 go 语言驱动，golang 网站的数据存储就是用的 MongoDB + mgo  操作123456789101112131415161718go get gopkg.in/mgo.v2     # 安装----import(                    # 1.导入 mgo 包&amp;quot;gopkg.in/mgo.v2&amp;quot;&amp;">
+  <link rel="canonical" href="http://yoursite.com/2017/08/31/2017083106/">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>mgo 驱动使用指南 | 叶落 知秋</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">叶落 知秋</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+    </ul>
+</nav>
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/31/2017083106/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jack Wang">
+      <meta itemprop="description" content="个人知识总结">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶落 知秋">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">mgo 驱动使用指南
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-08-31 17:16:04" itemprop="dateCreated datePublished" datetime="2017-08-31T17:16:04+08:00">2017-08-31</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-11-11 12:18:06" itemprop="dateModified" datetime="2017-11-11T12:18:06+08:00">2017-11-11</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon"
+              >
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="mgo-驱动使用指南"><a href="#mgo-驱动使用指南" class="headerlink" title="mgo 驱动使用指南"></a>mgo 驱动使用指南</h1><blockquote>
+<p>mgo 是 MongoDB 的 go 语言驱动，golang 网站的数据存储就是用的 MongoDB + mgo</p>
+</blockquote>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">go get gopkg.in/mgo.v2     # 安装</span><br><span class="line">----</span><br><span class="line">import(                    # 1.导入 mgo 包</span><br><span class="line">&quot;gopkg.in/mgo.v2&quot;</span><br><span class="line">&quot;gopkg.in/mgo.v2/bson&quot;</span><br><span class="line">)</span><br><span class="line">----</span><br><span class="line">func Dial(url string)(*Session error)  # Dial 方法 mgo包自带与 Mongo 服务器建立连接</span><br><span class="line">session, err := mgo.Dial(&quot;url&quot;)        # 2.连接服务器</span><br><span class="line"># 具体使用 本机地址 127.0.0.1：27017 or localhost</span><br><span class="line"># 远端地址 mongo://url</span><br><span class="line">----</span><br><span class="line">func (s *Session) DB(name string) *Database  # DB 方法定义</span><br><span class="line">db := session DB(&quot;test&quot;)                # 3.切换数据库</span><br><span class="line">----</span><br><span class="line">func (db *Database) C(name string) *Collection  # C 方法定义</span><br><span class="line">c:=db.C(&quot;users&quot;)                                # 4.切换集合</span><br><span class="line">----</span><br></pre></td></tr></table></figure>
+
+<h2 id="对集合进行操作"><a href="#对集合进行操作" class="headerlink" title="对集合进行操作"></a>对集合进行操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"># 和集合对应的 struct 的编写</span><br><span class="line">type User struct</span><br><span class="line">&#123;</span><br><span class="line">    Id_ bson.ObjectID &apos;bson:&quot;_id&apos;    # 字段首字母大写，不然不可见，id可以不定义，可以自动生成</span><br><span class="line">    Name string &apos;bson:&quot;name&quot;&apos;        # bson:&quot;name&quot; 定义MongoDB集合中的字段名</span><br><span class="line">    Age int &apos;bson:&quot;age&quot;&apos;</span><br><span class="line">    JonedAt time.Time &apos;bson:&quot;joined_at&quot;&apos;</span><br><span class="line">    Interests []string &apos;bson:&quot;interests&quot;&apos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># mgo 中的增删改查</span><br><span class="line">----</span><br><span class="line">func (c *Collection)Insert(docs ...interface&#123;&#125;) error  # Insert 方法定义</span><br><span class="line">err = c.Insert(&amp;User&#123;Id_: bson.NewObjectID(),          # Insert 方法返回一个错误</span><br><span class="line">                     Name:&quot;jimmy&quot;,                     # 错误为空保证插入正确</span><br><span class="line">                     Age: 33,</span><br><span class="line">                     JoinedAt: time.Now(),</span><br><span class="line">                     Interests: []string&#123;&quot;Develop&quot;,&quot;movie&quot;&#125;,</span><br><span class="line">&#125;)</span><br><span class="line">if err!= nil &#123;</span><br><span class="line">    panic(err)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过<code>func (c *Collection) Find(query interface{}) *Query</code>来进行查询，返回的<code>Query struct</code>可以有附加各种条件来进行过滤。</p>
+<p>通过<code>Query.All()</code>可以获得所有结果，通过<code>Query.One()</code>可以获得一个结果，注意如果没有数据或者数量超过一个，One()会报错。</p>
+<p>条件用<code>bson.M{key: value}</code>，注意key必须用MongoDB中的字段名，而不是struct的字段名。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 无条件查询</span><br><span class="line">var users []User</span><br><span class="line">c.Find(nil).All(&amp;users)</span><br><span class="line">fmt.Println(users)</span><br><span class="line"></span><br><span class="line">id := &quot;5204af979955496907000001&quot;</span><br><span class="line">objectId := bson.ObjectIdHex(id)</span><br><span class="line">user := new(User)</span><br><span class="line">c.Find(bson.M&#123;&quot;_id&quot;: objectId&#125;).One(&amp;user)</span><br><span class="line">fmt.Println(user)</span><br><span class="line"></span><br><span class="line">c.FindId(objectId).One(&amp;user)</span><br></pre></td></tr></table></figure>
+
+<pre><code># 单条件查询
+=($eq)
+c.Find(bson.M{&quot;name&quot;: &quot;Jimmy Kuu&quot;}).All(&amp;users)
+!=($ne)
+c.Find(bson.M{&quot;name&quot;: bson.M{&quot;$ne&quot;: &quot;Jimmy Kuu&quot;}}).All(&amp;users)
+&gt;($gt)
+c.Find(bson.M{&quot;age&quot;: bson.M{&quot;$gt&quot;: 32}}).All(&amp;users)
+&lt;($lt)
+c.Find(bson.M{&quot;age&quot;: bson.M{&quot;$lt&quot;: 32}}).All(&amp;users)
+&gt;=($gte)
+c.Find(bson.M{&quot;age&quot;: bson.M{&quot;$gte&quot;: 33}}).All(&amp;users)
+&lt;=($lte)
+c.Find(bson.M{&quot;age&quot;: bson.M{&quot;$lte&quot;: 31}}).All(&amp;users)
+in($in)
+c.Find(bson.M{&quot;name&quot;: bson.M{&quot;$in&quot;: []string{&quot;Jimmy Kuu&quot;, &quot;Tracy Yu&quot;}}}).All(&amp;users)
+
+# 多条件查询
+and($and)
+c.Find(bson.M{&quot;name&quot;: &quot;Jimmy Kuu&quot;, &quot;age&quot;: 33}).All(&amp;users)
+or($or)
+c.Find(bson.M{&quot;$or&quot;: []bson.M{bson.M{&quot;name&quot;: &quot;Jimmy Kuu&quot;}, bson.M{&quot;age&quot;: 31}}}).All(&amp;users)
+
+# 修改字段的值($set)
+
+c.Update(bson.M{&quot;_id&quot;: bson.ObjectIdHex(&quot;5204af979955496907000001&quot;)},
+    bson.M{&quot;$set&quot;: bson.M{
+        &quot;name&quot;: &quot;Jimmy Gu&quot;,
+        &quot;age&quot;:  34,
+    }})
+
+inc($inc)
+
+# 字段增加值
+
+c.Update(bson.M{&quot;_id&quot;: bson.ObjectIdHex(&quot;5204af979955496907000001&quot;)},
+    bson.M{&quot;$inc&quot;: bson.M{
+        &quot;age&quot;: -1,
+    }})
+
+push($push)
+
+# 从数组中增加一个元素
+
+c.Update(bson.M{&quot;_id&quot;: bson.ObjectIdHex(&quot;5204af979955496907000001&quot;)},
+    bson.M{&quot;$push&quot;: bson.M{
+        &quot;interests&quot;: &quot;Golang&quot;,
+    }})
+
+pull($pull)
+
+# 从数组中删除一个元素
+
+c.Update(bson.M{&quot;_id&quot;: bson.ObjectIdHex(&quot;5204af979955496907000001&quot;)},
+    bson.M{&quot;$pull&quot;: bson.M{
+        &quot;interests&quot;: &quot;Golang&quot;,
+    }})
+
+# 删除
+c.Remove(bson.M{&quot;name&quot;: &quot;Jimmy Kuu&quot;})</code></pre>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/数据库/" rel="tag"># 数据库</a>
+          
+        </div>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2017/08/31/2017083105/" rel="next" title="python 学习笔记一">
+                <i class="fa fa-chevron-left"></i> python 学习笔记一
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+              <a href="/2017/08/31/2017083106-1/" rel="prev" title="python 学习笔记二">
+                python 学习笔记二 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+         
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.gif"
+      alt="Jack Wang">
+  <p class="site-author-name" itemprop="name">Jack Wang</p>
+  <div class="site-description motion-element" itemprop="description">个人知识总结</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/jackwangc" title="GitHub &rarr; https://github.com/jackwangc" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:wang.jie.jack6@gmail.com" title="E-Mail &rarr; mailto:wang.jie.jack6@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+  <div class="links-of-blogroll motion-element links-of-blogroll-block">
+    <div class="links-of-blogroll-title">
+      <i class="fa  fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://jackwangc.github.io/Docsify/#/" title="https://jackwangc.github.io/Docsify/#/" rel="noopener" target="_blank">Java 面试总结</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+          <div id = "music">
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 
+            src="//music.163.com/outchain/player?type=2&id=450795499&auto=1&height=66"></iframe>
+          </div>
+          
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#mgo-驱动使用指南"><span class="nav-number">1.</span> <span class="nav-text">mgo 驱动使用指南</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#操作"><span class="nav-number">1.1.</span> <span class="nav-text">操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对集合进行操作"><span class="nav-number">1.2.</span> <span class="nav-text">对集合进行操作</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jack Wang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+
+  </div>
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  <script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+  
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.3.0"></script>
+
+  
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

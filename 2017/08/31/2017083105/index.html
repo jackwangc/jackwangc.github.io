@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    save_scroll: false,
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    search: {
+      root: '/',
+      path: ''
+    },
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="python 学习笔记 一 phython 参考文档Python tutorial：http://www.pythondoc.com/pythontutorial3/index.htmlPython for you and me：http://pymbook.readthedocs.io/en/latest/The Python Standard Library：https://docs.pyth">
+<meta name="keywords" content="后台">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python 学习笔记一">
+<meta property="og:url" content="http://yoursite.com/2017/08/31/2017083105/index.html">
+<meta property="og:site_name" content="叶落 知秋">
+<meta property="og:description" content="python 学习笔记 一 phython 参考文档Python tutorial：http://www.pythondoc.com/pythontutorial3/index.htmlPython for you and me：http://pymbook.readthedocs.io/en/latest/The Python Standard Library：https://docs.pyth">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-11-11T04:17:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python 学习笔记一">
+<meta name="twitter:description" content="python 学习笔记 一 phython 参考文档Python tutorial：http://www.pythondoc.com/pythontutorial3/index.htmlPython for you and me：http://pymbook.readthedocs.io/en/latest/The Python Standard Library：https://docs.pyth">
+  <link rel="canonical" href="http://yoursite.com/2017/08/31/2017083105/">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>python 学习笔记一 | 叶落 知秋</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">叶落 知秋</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+    </ul>
+</nav>
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/31/2017083105/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jack Wang">
+      <meta itemprop="description" content="个人知识总结">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶落 知秋">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">python 学习笔记一
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-08-31 17:11:53" itemprop="dateCreated datePublished" datetime="2017-08-31T17:11:53+08:00">2017-08-31</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-11-11 12:17:12" itemprop="dateModified" datetime="2017-11-11T12:17:12+08:00">2017-11-11</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon"
+              >
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="python-学习笔记-一"><a href="#python-学习笔记-一" class="headerlink" title="python 学习笔记 一"></a>python 学习笔记 一</h1><blockquote>
+<p>phython 参考文档<br>Python tutorial：<a href="http://www.pythondoc.com/pythontutorial3/index.html" target="_blank" rel="noopener">http://www.pythondoc.com/pythontutorial3/index.html</a><br>Python for you and me：<a href="http://pymbook.readthedocs.io/en/latest/" target="_blank" rel="noopener">http://pymbook.readthedocs.io/en/latest/</a><br>The Python Standard Library：<a href="https://docs.python.org/3/library/index.html" target="_blank" rel="noopener">https://docs.python.org/3/library/index.html</a></p>
+</blockquote>
+<h2 id="代码风格"><a href="#代码风格" class="headerlink" title="代码风格"></a>代码风格</h2><ul>
+<li>使用 4 个空格来缩进</li>
+<li>永远不要混用空格和制表符</li>
+<li>在函数之间空一行</li>
+<li>在类之间空两行</li>
+<li>字典，列表，元组以及参数列表中，在 , 后添加一个空格。对于字典，: 后面也添加一个空格</li>
+<li>在赋值运算符和比较运算符周围要有空格（参数列表中除外），但是括号里侧不加空格：a = f(1, 2) + g(3, 4)</li>
+<li>Python 的注释以 # 字符开始的，在 # 字符到行尾之间的所有东西都被程序忽略为注释，也就说对程序没有任何影响。（ # 后跟一个空格，然后再写注释。）</li>
+<li>input（“接受键盘输入函数”）</li>
+<li>文件中第一行的前两个字符 #! 称为 Shebang ，目的是告诉 shell 使用 Python 解释器执行其下面的代码。</li>
+<li>./filename.py 执行方法 为文件添加可执行权限</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x filename</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>python 中不需要为变量指定数据类型，直接给变量赋值即可。</li>
+<li>导入模块</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import math</span><br></pre></td></tr></table></figure>
+
+<h2 id="变量和数据类型"><a href="#变量和数据类型" class="headerlink" title="变量和数据类型"></a>变量和数据类型</h2><h3 id="python-关键字"><a href="#python-关键字" class="headerlink" title="python 关键字"></a>python 关键字</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">False               def                 if                  raise</span><br><span class="line">None                del                 import              return</span><br><span class="line">True                elif                in                  try</span><br><span class="line">and                 else                is                  while</span><br><span class="line">as                  except              lambda              with</span><br><span class="line">assert              finally             nonlocal            yield</span><br><span class="line">break               for                 not                 </span><br><span class="line">class               from                or                  </span><br><span class="line">continue            global              pass</span><br></pre></td></tr></table></figure>
+
+<h3 id="python-运算符"><a href="#python-运算符" class="headerlink" title="python 运算符"></a>python 运算符</h3><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>功能</th>
+<th>逻辑运算符</th>
+<th>功能</th>
+<th>类型转换</th>
+<th>转换路径</th>
+<th>成员运算符</th>
+<th>逻辑运算符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>%</td>
+<td>取余</td>
+<td>and</td>
+<td>与</td>
+<td>float(string)</td>
+<td>字符 -&gt; 浮点</td>
+<td>in</td>
+<td>is</td>
+</tr>
+<tr>
+<td>/</td>
+<td>除法</td>
+<td>or</td>
+<td>或</td>
+<td>string(float)</td>
+<td>浮点 -&gt; 字符</td>
+<td>not in</td>
+<td>is not</td>
+</tr>
+<tr>
+<td>//</td>
+<td>取整</td>
+<td>not</td>
+<td>非</td>
+<td>type1(type2)</td>
+<td>type2 -&gt; type1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>x**y</td>
+<td>返回x的y次幂</td>
+<td>*</td>
+<td>两个数相乘;返回一个被重复若干次的字符串</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="python-输出函数"><a href="#python-输出函数" class="headerlink" title="python 输出函数"></a>python 输出函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(&quot;Year &#123;&#125; Rs. &#123;:.2f&#125;&quot;.format(year, value))</span><br></pre></td></tr></table></figure>
+
+<p> 称为字符串格式化，大括号和其中的字符会被替换成传入 str.format() 的参数,即 year 和 value。</p>
+<p> {:7.2f} 的意思是替换为 总长为7,2 位精度的浮点数;{:5d} 的意思是替换为 5个字符宽度的整数，宽度不足则使用空格填充。</p>
+<h2 id="控制循环"><a href="#控制循环" class="headerlink" title="控制循环"></a>控制循环</h2><h3 id="if-else"><a href="#if-else" class="headerlink" title="if else"></a>if else</h3><p>第二行务必缩进 (四个空格)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if expression:</span><br><span class="line">    do this</span><br><span class="line">elif expression1:</span><br><span class="line">    do this</span><br><span class="line">else:</span><br><span class="line">    do this</span><br></pre></td></tr></table></figure>
+
+<h3 id="真值检测"><a href="#真值检测" class="headerlink" title="真值检测"></a>真值检测</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if x:</span><br><span class="line">    do this</span><br></pre></td></tr></table></figure>
+
+<h3 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h3><p>while循环</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">while condition:</span><br><span class="line">    statement1</span><br><span class="line">    statement2</span><br></pre></td></tr></table></figure>
+
+<h3 id="for-循环"><a href="#for-循环" class="headerlink" title="for 循环"></a>for 循环</h3><p>python for 循环可以遍历任何序列中的每一个元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span><br><span class="line">for x in a[::2]:</span><br><span class="line">    print(x)</span><br></pre></td></tr></table></figure>
+
+<p>遍历数值序列</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for i in range(0,5):</span><br><span class="line">    print(i)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;bye&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>循环后面的 else 语句会在循环结束后执行； continue 跳出本次循环 ；break 跳出整个循环；Python pass是空语句，是为了保持程序结构的完整性。pass 不做任何事情，一般用做占位语句。</p>
+<h2 id="序列-数组"><a href="#序列-数组" class="headerlink" title="序列(数组)"></a>序列(数组)</h2><h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>列表是最常用的Python数据类型，它可以作为一个方括号内的逗号分隔值出现。<br>列表的数据项不需要具有相同的类型<br>创建一个列表，只要把逗号分隔的不同的数据项使用方括号括起来即可。</p>
+<h4 id="列表常用方法"><a href="#列表常用方法" class="headerlink" title="列表常用方法"></a>列表常用方法</h4><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>代码</th>
+<th>方法</th>
+<th>代码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>添加元素到表尾</td>
+<td>list.append(x)</td>
+<td>指定位置插入元素</td>
+<td>list.insert(i,x)</td>
+</tr>
+<tr>
+<td>表1添加到表2</td>
+<td>list.extend(L)</td>
+<td>删除值为x元素</td>
+<td>list.remove(x)</td>
+</tr>
+<tr>
+<td>删除位置元素返回</td>
+<td>list.pop([ i ])</td>
+<td>删除表中所有元素</td>
+<td>list.clear()</td>
+</tr>
+<tr>
+<td>返回值为x的索引</td>
+<td>list.index(x)</td>
+<td>返回x在列表中出现次数</td>
+<td>list.sort()</td>
+</tr>
+<tr>
+<td>倒排列表</td>
+<td>list.reverse()</td>
+<td>返回列表拷贝</td>
+<td>list.copy()</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>python列表函数</th>
+<th>功能</th>
+<th>python列表函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>max(list)</td>
+<td>列表最大值</td>
+<td>list(seq)</td>
+<td>元组转换为列表</td>
+</tr>
+<tr>
+<td>min(list)</td>
+<td>列表最小值</td>
+<td>len(list)</td>
+<td>列表元素长度</td>
+</tr>
+</tbody></table>
+<h4 id="列表常用操作"><a href="#列表常用操作" class="headerlink" title="列表常用操作"></a>列表常用操作</h4><ul>
+<li>列表对 + 和 * 的操作符与字符串相似。+ 号用于组合列表，* 号用于重复列表。</li>
+<li>切片 a [ : ] 切片索引默认第一个为 0 ; 第二个为字符串的长度。</li>
+<li>切片索引为负号时则从列表末尾开始计数 ( 从 0 开始，-1，-2)，切片长度为索引之差。</li>
+<li>Python 能够优雅地处理那些没有意义的切片索引：一个过大的索引值(即大于列表实际长度)将被列表实际长度所代替，当上边界比下边界大时(即切片左值大于右值)就返回空列表。</li>
+<li>切片操作可以设置步长，a[1::2] 从切片索引 1 到列表末尾，每隔两个元素取值。</li>
+<li>列表可以修改元素。</li>
+<li>对切片进行赋值操作也会影响原列表。</li>
+<li>遍历列表（或任何序列类型）的同时获得元素索引值，你可以使用 enumerate()</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; for i, j in enumerate([&apos;a&apos;, &apos;b&apos;, &apos;c&apos;]):</span><br><span class="line">...     print(i, j)</span><br><span class="line">...</span><br><span class="line">0 a</span><br><span class="line">1 b</span><br><span class="line">2 c</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>同时遍历两个</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = [&apos;Pradeepto&apos;, &apos;Kushal&apos;]</span><br><span class="line">&gt;&gt;&gt; b = [&apos;OpenSUSE&apos;, &apos;Fedora&apos;]</span><br><span class="line">&gt;&gt;&gt; for x, y in zip(a, b):</span><br><span class="line">...     print(&quot;&#123;&#125; uses &#123;&#125;&quot;.format(x, y))</span><br><span class="line">Pradeepto uses OpenSUSE</span><br><span class="line">Kushal uses Fedora</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>列表推导式 <code>a=[x**2 for x in range(10)]</code> 创建列表不产生副作用。</p>
+<p>  列表推导式由包含一个表达式的中括号组成，表达式后面跟随一个 for 子句，之后可以有零或多个 for 或 if 子句。结果是一个列表，由表达式依据其后面的 for 和 if 子句上下文计算而来的结果构成。列表推导式可以嵌套。</p>
+</li>
+</ul>
+<h3 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h3><p>Python的元组与列表类似，不同之处在于元组的元素不能修改。<br>元组使用小括号，列表使用方括号。<br>元组创建很简单，只需要在括号中添加元素，并使用逗号隔开即可。</p>
+<p>元组与列表的区别，元组它的关键是不可变性。<br>如果在程序中以列表的形式传递一个对象的集合，它可能在任何地方改变；如果使用元组的话，则不能。元组提供了一种完整的约束。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tup1 = (a,)</span><br></pre></td></tr></table></figure>
+
+<h4 id="元组常用操作"><a href="#元组常用操作" class="headerlink" title="元组常用操作"></a>元组常用操作</h4><ul>
+<li>元组中只包含一个元素时，需要在元素后面添加逗号</li>
+<li>元组与字符串类似，下标索引从0开始，可以进行截取，组合等</li>
+<li>元组中的元素值是不允许修改的，但我们可以对元组进行连接组合</li>
+<li>元组中的元素值是不允许删除的，但我们可以使用del语句来删除整个元组</li>
+<li>元组也是一个序列，所以我们可以访问元组中的指定位置的元素，也可以截取索引中的一段元素</li>
+<li>任意无符号的对象，以逗号隔开，默认为元组</li>
+<li>tuple(seq)将列表转换为元组。</li>
+</ul>
+<h3 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h3><p>字典是另一种可变容器模型，且可存储任意类型对象。</p>
+<p>字典的每个键值(key=&gt;value)对用冒号(:)分割，每个对之间用逗号(,)分割，整个字典包括在花括号({})中</p>
+<h4 id="字典常用操作"><a href="#字典常用操作" class="headerlink" title="字典常用操作"></a>字典常用操作</h4><ul>
+<li>键必须是唯一的，但值则不必。值可以取任何数据类型，但键必须是不可变的，如字符串，数字或元组。</li>
+<li>使用 in 关键字查询指定的键是否存在于字典中。<code>&quot;a&quot; in data</code></li>
+<li>如果你想要遍历一个字典，使用字典的 items() 方法 <code>for x, y in data.items():</code></li>
+<li>dict() 可以从包含键值对的元组中创建字典 <code>dict(((&#39;Indian&#39;,&#39;Delhi&#39;),(&#39;Bangladesh&#39;,&#39;Dhaka&#39;)))</code></li>
+<li>往字典中添加元素<code>dict.setdefault(key, default) ：data.setdefault(&#39;names&#39;, []).append(&#39;Ruby&#39;)</code></li>
+<li>字典删除操作</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">del dict[&apos;Name&apos;]; # 删除键是&apos;Name&apos;的条目</span><br><span class="line">dict.clear();     # 清空词典所有条目</span><br><span class="line">del dict ;        # 删除词典</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>不允许同一个键出现两次。创建时如果同一个键被赋值两次，后一个值会被记住。键不可用列表。</li>
+</ul>
+<h3 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h3><ul>
+<li>集合是一个无序不重复元素的集</li>
+<li>大括号或 set() 函数可以用来创建集合</li>
+<li>想要创建空集合，你必须使用 set() 而不是 {}。后者用于创建空字典</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">basket = &#123;&apos;apple&apos;, &apos;orange&apos;, &apos;apple&apos;, &apos;pear&apos;, &apos;orange&apos;, &apos;banana&apos;&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>单引号（’…’）或双引号（”…”） 引入字符串 无格式 不支持自动换行 需要在字符串内手动加入换行符 \n</p>
+<p>“””…””” 或 ‘’’…’’’ 可自动将换行符加入字符串内</p>
+<h3 id="字符串方法"><a href="#字符串方法" class="headerlink" title="字符串方法"></a>字符串方法</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>功能</th>
+<th>方法</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>title()</td>
+<td>字符串单词首字母大写</td>
+<td>upper()/lower()</td>
+<td>字符串全部大小写</td>
+</tr>
+<tr>
+<td>isalnum()</td>
+<td>字符串是否全部为字母数字</td>
+<td>isalpha()</td>
+<td>是否全部为字母</td>
+</tr>
+<tr>
+<td>spilt()</td>
+<td>分割字符串，参数为分割符</td>
+<td>join()</td>
+<td>使用指定字符连接字符串</td>
+</tr>
+<tr>
+<td>strip()</td>
+<td>字符串剥离</td>
+<td>find()</td>
+<td>查找字符串索引，没有返回-1</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/后台/" rel="tag"># 后台</a>
+          
+        </div>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2017/08/31/2017083104/" rel="next" title="go 语言学习笔记">
+                <i class="fa fa-chevron-left"></i> go 语言学习笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+              <a href="/2017/08/31/2017083106/" rel="prev" title="mgo 驱动使用指南">
+                mgo 驱动使用指南 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+         
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.gif"
+      alt="Jack Wang">
+  <p class="site-author-name" itemprop="name">Jack Wang</p>
+  <div class="site-description motion-element" itemprop="description">个人知识总结</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/jackwangc" title="GitHub &rarr; https://github.com/jackwangc" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:wang.jie.jack6@gmail.com" title="E-Mail &rarr; mailto:wang.jie.jack6@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+  <div class="links-of-blogroll motion-element links-of-blogroll-block">
+    <div class="links-of-blogroll-title">
+      <i class="fa  fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://jackwangc.github.io/Docsify/#/" title="https://jackwangc.github.io/Docsify/#/" rel="noopener" target="_blank">Java 面试总结</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+          <div id = "music">
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 
+            src="//music.163.com/outchain/player?type=2&id=450795499&auto=1&height=66"></iframe>
+          </div>
+          
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#python-学习笔记-一"><span class="nav-number">1.</span> <span class="nav-text">python 学习笔记 一</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码风格"><span class="nav-number">1.1.</span> <span class="nav-text">代码风格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量和数据类型"><span class="nav-number">1.2.</span> <span class="nav-text">变量和数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#python-关键字"><span class="nav-number">1.2.1.</span> <span class="nav-text">python 关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python-运算符"><span class="nav-number">1.2.2.</span> <span class="nav-text">python 运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python-输出函数"><span class="nav-number">1.2.3.</span> <span class="nav-text">python 输出函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制循环"><span class="nav-number">1.3.</span> <span class="nav-text">控制循环</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#if-else"><span class="nav-number">1.3.1.</span> <span class="nav-text">if else</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#真值检测"><span class="nav-number">1.3.2.</span> <span class="nav-text">真值检测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环"><span class="nav-number">1.3.3.</span> <span class="nav-text">循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-循环"><span class="nav-number">1.3.4.</span> <span class="nav-text">for 循环</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列-数组"><span class="nav-number">1.4.</span> <span class="nav-text">序列(数组)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#列表"><span class="nav-number">1.4.1.</span> <span class="nav-text">列表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#列表常用方法"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">列表常用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列表常用操作"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">列表常用操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元组"><span class="nav-number">1.4.2.</span> <span class="nav-text">元组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#元组常用操作"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">元组常用操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字典"><span class="nav-number">1.4.3.</span> <span class="nav-text">字典</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#字典常用操作"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">字典常用操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集合"><span class="nav-number">1.4.4.</span> <span class="nav-text">集合</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串"><span class="nav-number">1.5.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串方法"><span class="nav-number">1.5.1.</span> <span class="nav-text">字符串方法</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jack Wang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+
+  </div>
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  <script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+  
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.3.0"></script>
+
+  
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

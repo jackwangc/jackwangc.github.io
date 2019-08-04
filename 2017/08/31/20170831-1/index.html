@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    save_scroll: false,
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    search: {
+      root: '/',
+      path: ''
+    },
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="css 布局1.基本语法CSS 规则由两个主要的部分构成：选择器，以及一条或多条声明:  选择器通常是您需要改变样式的 HTML 元素  每条声明由一个属性和一个值组成  属性（property）是您希望设置的样式属性（style attribute）  每个属性有一个值。属性和值被冒号分开  CSS声明总是以分号(;)结束，声明组以大括号({})括起来  为了让CSS可读性更强，你可以每行只描述">
+<meta name="keywords" content="前台">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css 布局">
+<meta property="og:url" content="http://yoursite.com/2017/08/31/20170831-1/index.html">
+<meta property="og:site_name" content="叶落 知秋">
+<meta property="og:description" content="css 布局1.基本语法CSS 规则由两个主要的部分构成：选择器，以及一条或多条声明:  选择器通常是您需要改变样式的 HTML 元素  每条声明由一个属性和一个值组成  属性（property）是您希望设置的样式属性（style attribute）  每个属性有一个值。属性和值被冒号分开  CSS声明总是以分号(;)结束，声明组以大括号({})括起来  为了让CSS可读性更强，你可以每行只描述">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-11-11T04:10:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css 布局">
+<meta name="twitter:description" content="css 布局1.基本语法CSS 规则由两个主要的部分构成：选择器，以及一条或多条声明:  选择器通常是您需要改变样式的 HTML 元素  每条声明由一个属性和一个值组成  属性（property）是您希望设置的样式属性（style attribute）  每个属性有一个值。属性和值被冒号分开  CSS声明总是以分号(;)结束，声明组以大括号({})括起来  为了让CSS可读性更强，你可以每行只描述">
+  <link rel="canonical" href="http://yoursite.com/2017/08/31/20170831-1/">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>css 布局 | 叶落 知秋</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">叶落 知秋</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+    </ul>
+</nav>
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/31/20170831-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jack Wang">
+      <meta itemprop="description" content="个人知识总结">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶落 知秋">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">css 布局
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-08-31 15:42:25" itemprop="dateCreated datePublished" datetime="2017-08-31T15:42:25+08:00">2017-08-31</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-11-11 12:10:04" itemprop="dateModified" datetime="2017-11-11T12:10:04+08:00">2017-11-11</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon"
+              >
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="css-布局"><a href="#css-布局" class="headerlink" title="css 布局"></a>css 布局</h1><h2 id="1-基本语法"><a href="#1-基本语法" class="headerlink" title="1.基本语法"></a>1.基本语法</h2><p>CSS 规则由两个主要的部分构成：选择器，以及一条或多条声明:</p>
+<ul>
+<li><p>选择器通常是您需要改变样式的 HTML 元素</p>
+</li>
+<li><p>每条声明由一个属性和一个值组成</p>
+</li>
+<li><p>属性（property）是您希望设置的样式属性（style attribute）</p>
+</li>
+<li><p>每个属性有一个值。属性和值被冒号分开</p>
+</li>
+<li><p>CSS声明总是以分号(;)结束，声明组以大括号({})括起来</p>
+</li>
+<li><p>为了让CSS可读性更强，你可以每行只描述一个属性:</p>
+</li>
+<li><p>CSS注释以 <code>&quot;/*&quot;</code>开始, 以<code>&quot;*/&quot;</code>结束</p>
+</li>
+<li><p>CSS中，颜色值通常以以下方式定义:</p>
+<p>十六进制 - 如：”#ff0000” (0xff0000 跟前面颜色一样 0x 代表透明度)</p>
+<p>RGB - 如：”rgb(255,0,0)”</p>
+<p>颜色名称 - 如：”red”</p>
+</li>
+</ul>
+<h2 id="2-选择器"><a href="#2-选择器" class="headerlink" title="2.选择器"></a>2.选择器</h2><h3 id="2-1-id-选择器"><a href="#2-1-id-选择器" class="headerlink" title="2.1 id 选择器"></a>2.1 id 选择器</h3><p>HTML元素以id属性来设置id选择器,CSS 中 id 选择器以 “#” 来定义。</p>
+<h3 id="2-2-class-选择器"><a href="#2-2-class-选择器" class="headerlink" title="2.2 class 选择器"></a>2.2 class 选择器</h3><p>class 选择器用于描述一组元素的样式</p>
+<p>class 选择器有别于 id 选择器，class 可以在多个元素中使用。</p>
+<p>class 选择器在 HTML 中以 class 属性表示, 在 CSS 中，类选择器以一个点”.”号显示：</p>
+<p>所有拥有 class 为 center 的元素的属性 <code>.center {text-align:center;}</code> p 元素中 class 为 center 的属性<code>p.center {text-align:center;}</code></p>
+<h2 id="3-css-创建"><a href="#3-css-创建" class="headerlink" title="3. css 创建"></a>3. css 创建</h2><h3 id="3-1外部样式表"><a href="#3-1外部样式表" class="headerlink" title="3.1外部样式表"></a>3.1外部样式表</h3><p>当样式需要应用于很多页面时，外部样式表将是理想的选择。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;mystyle.css&quot;&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="3-2-内部样式表"><a href="#3-2-内部样式表" class="headerlink" title="3.2 内部样式表"></a>3.2 内部样式表</h3><p>当单个文档需要特殊的样式时，就应该使用内部样式表。你可以使用<code>&lt;style&gt;</code> 标签在文档头部定义内部样式表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">hr &#123;color:sienna;&#125;</span><br><span class="line">p &#123;margin-left:20px;&#125;</span><br><span class="line">body &#123;background-image:url(&quot;images/back40.gif&quot;);&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="3-3-内联样式"><a href="#3-3-内联样式" class="headerlink" title="3.3 内联样式"></a>3.3 内联样式</h3><p>要使用内联样式，你需要在相关的标签内使用样式（style）属性。Style 属性可以包含任何 CSS 属性。本例展示如何改变段落的颜色和左外边距</p>
+<p><code>&lt;p style=&quot;color:sienna;margin-left:20px&quot;&gt;这是一个段落。&lt;/p&gt;</code></p>
+<hr>
+<h3 id="3-4-多重样式优先级"><a href="#3-4-多重样式优先级" class="headerlink" title="3.4 多重样式优先级"></a>3.4 多重样式优先级</h3><p>一般情况下，优先级如下：<br>内联样式）Inline style &gt; （内部样式）Internal style sheet &gt;（外部样式）External style sheet &gt; 浏览器默认样式</p>
+<hr>
+<h2 id="4-css-样式"><a href="#4-css-样式" class="headerlink" title="4. css 样式"></a>4. css 样式</h2><h3 id="4-1-背景"><a href="#4-1-背景" class="headerlink" title="4.1 背景"></a>4.1 背景</h3><ul>
+<li><p>background-color  属性定义了元素的背景颜色.</p>
+</li>
+<li><p>background-image  属性描述了元素的背景图像，默认情况下，背景图像进行平铺重复显示，以覆盖整个元素实体</p>
+</li>
+<li><p>background-repeat 属性描述北京图像的平铺属性<code>background-repeat:repeat-x;</code>设置背景图像水平平铺<code>background-repeat:no-repeat;</code>设置背景图像不平铺</p>
+</li>
+<li><p>background-attachment 背景图像是否固定</p>
+</li>
+<li><p>background-position 设置背景图像起始位置</p>
+</li>
+</ul>
+<h3 id="4-2-文本"><a href="#4-2-文本" class="headerlink" title="4.2 文本"></a>4.2 文本</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>color</td>
+<td>设置文本颜色</td>
+<td><code>body{color:red;}</code></td>
+</tr>
+<tr>
+<td>direction</td>
+<td>设置文本方向</td>
+<td><code>object.style.direction=&quot;rtl&quot;or&quot;ltr&quot;</code></td>
+</tr>
+<tr>
+<td>letter-spacing</td>
+<td>设置字符间距</td>
+<td><code>letter-spacing:2px</code></td>
+</tr>
+<tr>
+<td>line-height</td>
+<td>设置行高</td>
+<td><code>line-height:90%</code></td>
+</tr>
+<tr>
+<td>text-align</td>
+<td>元素中文本对齐方式</td>
+<td><code>text-align:center</code></td>
+</tr>
+<tr>
+<td>text-decoration</td>
+<td>向文本添加修饰</td>
+<td><code>text-decoration:overline</code></td>
+</tr>
+<tr>
+<td>text-indent</td>
+<td>缩进元素中文本的首行</td>
+<td><code>text-indent:50px</code></td>
+</tr>
+<tr>
+<td>text-shadow</td>
+<td>设置文本阴影</td>
+<td><code>text-shadow: 2px 2px #ff0000</code></td>
+</tr>
+<tr>
+<td>text-transform</td>
+<td>控制元素中的字母</td>
+<td><code>uppercase lowercase capitalize</code></td>
+</tr>
+<tr>
+<td>unicode-bidi</td>
+<td>设置或返回文本是否被重写</td>
+<td></td>
+</tr>
+<tr>
+<td>vertical-align</td>
+<td>设置元素的垂直对齐</td>
+<td><code>vertical-align:text-top text-bottom</code></td>
+</tr>
+<tr>
+<td>white-space</td>
+<td>设置元素中空白的处理方式</td>
+<td></td>
+</tr>
+<tr>
+<td>word-spacing</td>
+<td>设置字间距</td>
+<td><code>word-spacing:30px</code></td>
+</tr>
+</tbody></table>
+<h3 id="4-3-字体"><a href="#4-3-字体" class="headerlink" title="4.3 字体"></a>4.3 字体</h3><table>
+<thead>
+<tr>
+<th>Property</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>font</td>
+<td>在一个声明中设置所有的字体属性</td>
+</tr>
+<tr>
+<td>font-family</td>
+<td>指定文本的字体系列</td>
+</tr>
+<tr>
+<td>font-size</td>
+<td>指定文本的字体大小</td>
+</tr>
+<tr>
+<td>font-style</td>
+<td>指定文本的字体样式</td>
+</tr>
+<tr>
+<td>font-variant</td>
+<td>以小型大写字体或者正常字体显示文本。</td>
+</tr>
+<tr>
+<td>font-weight</td>
+<td>指定字体的粗细。</td>
+</tr>
+</tbody></table>
+<h3 id="4-4-链接"><a href="#4-4-链接" class="headerlink" title="4.4 链接"></a>4.4 链接</h3><ul>
+<li>a:link - 正常，未访问过的链接</li>
+<li>a:visited - 用户已访问过的链接</li>
+<li>a:hover - 当用户鼠标放在链接上时</li>
+<li>a:active - 链接被点击的那一刻</li>
+</ul>
+<h3 id="4-5-列表"><a href="#4-5-列表" class="headerlink" title="4.5 列表"></a>4.5 列表</h3><h3 id="4-6-表格"><a href="#4-6-表格" class="headerlink" title="4.6 表格"></a>4.6 表格</h3><h2 id="5-盒子模型"><a href="#5-盒子模型" class="headerlink" title="5. 盒子模型"></a>5. 盒子模型</h2><p>所有HTML元素可以看作盒子</p>
+<p>CSS盒模型本质上是一个盒子，封装周围的HTML元素，它包括：边距，边框，填充，和实际内容。</p>
+<ul>
+<li><p>Margin(外边距) - 清除边框外的区域，外边距是透明的</p>
+</li>
+<li><p>Border(边框) - 围绕在内边距和内容外的边框</p>
+</li>
+<li><p>Padding(内边距) - 清除内容周围的区域，内边距是透明的</p>
+</li>
+<li><p>Content(内容) - 盒子的内容，显示文本和图像</p>
+</li>
+</ul>
+<h2 id="6-定位"><a href="#6-定位" class="headerlink" title="6. 定位"></a>6. 定位</h2><h3 id="6-1-尺寸"><a href="#6-1-尺寸" class="headerlink" title="6.1 尺寸"></a>6.1 尺寸</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>height</td>
+<td>设置元素的高度。</td>
+</tr>
+<tr>
+<td>line-height</td>
+<td>设置行高。</td>
+</tr>
+<tr>
+<td>max-height</td>
+<td>设置元素的最大高度。</td>
+</tr>
+<tr>
+<td>max-width</td>
+<td>设置元素的最大宽度。</td>
+</tr>
+<tr>
+<td>min-height</td>
+<td>设置元素的最小高度。</td>
+</tr>
+<tr>
+<td>min-width</td>
+<td>设置元素的最小宽度。</td>
+</tr>
+<tr>
+<td>width</td>
+<td>设置元素的宽度。</td>
+</tr>
+</tbody></table>
+<h3 id="6-2-显示"><a href="#6-2-显示" class="headerlink" title="6.2 显示"></a>6.2 显示</h3><p>visibility:hidden可以隐藏某个元素，但隐藏的元素仍需占用与未隐藏之前一样的空间。也就是说，该元素虽然被隐藏了，但仍然会影响布局。</p>
+<p>display:none可以隐藏某个元素，且隐藏的元素不会占用任何空间。也就是说，该元素不但被隐藏了，而且该元素原本占用的空间也会从页面布局中消失</p>
+<p>display 属性的值为 “inline”的结果 两个元素显示在同一水平线上</p>
+<p>display 属性值为 “block” 的结果</p>
+<p>这两个元素之间的换行符</p>
+<h3 id="6-3-static"><a href="#6-3-static" class="headerlink" title="6.3 static"></a>6.3 static</h3><p>默认值，即没有定位，静态定位元素不受定位元素 top buttom left  right 影响</p>
+<h3 id="6-4-relative"><a href="#6-4-relative" class="headerlink" title="6.4 relative"></a>6.4 relative</h3><p>相对定位元素的定位是相对其正常位置。</p>
+<h3 id="6-5-absolute"><a href="#6-5-absolute" class="headerlink" title="6.5 absolute"></a>6.5 absolute</h3><p>绝对定位的元素的位置相对于最近的已定位父元素，如果元素没有已定位的父元素，那么它的位置相对于<code>&lt;html&gt;</code></p>
+<p>absolute 定位使元素的位置与文档流无关，因此不占据空间。</p>
+<p>absolute 定位的元素和其他元素重叠</p>
+<h3 id="6-6-fixed"><a href="#6-6-fixed" class="headerlink" title="6.6 fixed"></a>6.6 fixed</h3><p>元素的位置相对于浏览器窗口时固定位置</p>
+<p>Fixed定位使元素的位置与文档流无关，因此不占据空间。</p>
+<p>Fixed定位的元素和其他元素重叠。</p>
+<h3 id="6-7-position-relative-position-absolute"><a href="#6-7-position-relative-position-absolute" class="headerlink" title="6.7 position:relative + position:absolute"></a>6.7 position:relative + position:absolute</h3><p>父元素定位为 relative</p>
+<p>子元素定位为 absolute</p>
+<p>如果我们在div-1上设置相对位置，div-1中的任何元素将相对于div-1定位</p>
+<h3 id="6-8-float"><a href="#6-8-float" class="headerlink" title="6.8 float"></a>6.8 float</h3><p>CSS 的 Float（浮动），会使元素向左或向右移动，其周围的元素也会重新排列。</p>
+<p>Float（浮动），往往是用于图像，但它在布局时一样非常有用。</p>
+<p>元素浮动之后，周围的元素会重新排列，为了避免这种情况，使用 clear 属性。<br>clear 属性指定元素两侧不能出现浮动元素 <code>clear:both</code></p>
+<p><code>overflow</code>清除浮动，元素不溢出，父元素宽度以最大元素为基准</p>
+<h3 id="6-9-百分比宽度"><a href="#6-9-百分比宽度" class="headerlink" title="6.9 百分比宽度"></a>6.9 百分比宽度</h3><p>能够更好的适应页面</p>
+<h2 id="7-媒体查询"><a href="#7-媒体查询" class="headerlink" title="7. 媒体查询"></a>7. 媒体查询</h2><h2 id="8-display"><a href="#8-display" class="headerlink" title="8. display"></a>8. display</h2><h3 id="block"><a href="#block" class="headerlink" title="block"></a>block</h3><p>div 是一个标准的块级元素。一个块级元素会新开始一行并且尽可能撑满容器。其他常用的块级元素包括 p、 form 和 HTML5 中的新元素： header、 footer、 section等等。</p>
+<ul>
+<li><p>每个块级元素都从新的一行开始，并且其后的元素也另起一行。（一个块级元素独占一行）</p>
+</li>
+<li><p>元素的高度、宽度、行高以及顶和底边距都可设置。</p>
+</li>
+<li><p>元素宽度在不设置的情况下，是它本身父容器的100%（和父元素的宽度一致），除非设定一个宽度</p>
+</li>
+</ul>
+<h3 id="inline"><a href="#inline" class="headerlink" title="inline"></a>inline</h3><p>inline span 是一个标准的行内元素。一个行内元素可以在段落中<code>&lt;span&gt;</code>像这样 <code>&lt;/span&gt;</code>包裹一些文字而不会打乱段落的布局。 a元素是最常用的行内元素，它可以被用作链接。</p>
+<p>none 把 display 设置成 none<br>不会保留元素本该显示的空间，但是 visibility: hidden;还会保留</p>
+<ul>
+<li>和其他元素都在一行上；</li>
+<li>元素的高度、宽度、行高及顶部和底部边距不可设置；</li>
+<li>元素的宽度就是它包含的文字或图片的宽度，不可改变</li>
+</ul>
+<h3 id="inline-block"><a href="#inline-block" class="headerlink" title="inline-block"></a>inline-block</h3><p>同时具有 block 的宽高特性又具有 inline 的同行元素特性</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/前台/" rel="tag"># 前台</a>
+          
+        </div>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2017/08/31/20170831/" rel="next" title="linux 下配置 ss">
+                <i class="fa fa-chevron-left"></i> linux 下配置 ss
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+              <a href="/2017/08/31/2017083103/" rel="prev" title="Ajax 学习">
+                Ajax 学习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+         
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.gif"
+      alt="Jack Wang">
+  <p class="site-author-name" itemprop="name">Jack Wang</p>
+  <div class="site-description motion-element" itemprop="description">个人知识总结</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/jackwangc" title="GitHub &rarr; https://github.com/jackwangc" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:wang.jie.jack6@gmail.com" title="E-Mail &rarr; mailto:wang.jie.jack6@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+  <div class="links-of-blogroll motion-element links-of-blogroll-block">
+    <div class="links-of-blogroll-title">
+      <i class="fa  fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://jackwangc.github.io/Docsify/#/" title="https://jackwangc.github.io/Docsify/#/" rel="noopener" target="_blank">Java 面试总结</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+          <div id = "music">
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 
+            src="//music.163.com/outchain/player?type=2&id=450795499&auto=1&height=66"></iframe>
+          </div>
+          
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#css-布局"><span class="nav-number">1.</span> <span class="nav-text">css 布局</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-基本语法"><span class="nav-number">1.1.</span> <span class="nav-text">1.基本语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-选择器"><span class="nav-number">1.2.</span> <span class="nav-text">2.选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-id-选择器"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 id 选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-class-选择器"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 class 选择器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-css-创建"><span class="nav-number">1.3.</span> <span class="nav-text">3. css 创建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1外部样式表"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1外部样式表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-内部样式表"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 内部样式表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-内联样式"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 内联样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-多重样式优先级"><span class="nav-number">1.3.4.</span> <span class="nav-text">3.4 多重样式优先级</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-css-样式"><span class="nav-number">1.4.</span> <span class="nav-text">4. css 样式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-背景"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-文本"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 文本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-字体"><span class="nav-number">1.4.3.</span> <span class="nav-text">4.3 字体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-链接"><span class="nav-number">1.4.4.</span> <span class="nav-text">4.4 链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-列表"><span class="nav-number">1.4.5.</span> <span class="nav-text">4.5 列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-表格"><span class="nav-number">1.4.6.</span> <span class="nav-text">4.6 表格</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-盒子模型"><span class="nav-number">1.5.</span> <span class="nav-text">5. 盒子模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-定位"><span class="nav-number">1.6.</span> <span class="nav-text">6. 定位</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-尺寸"><span class="nav-number">1.6.1.</span> <span class="nav-text">6.1 尺寸</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-显示"><span class="nav-number">1.6.2.</span> <span class="nav-text">6.2 显示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-static"><span class="nav-number">1.6.3.</span> <span class="nav-text">6.3 static</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-relative"><span class="nav-number">1.6.4.</span> <span class="nav-text">6.4 relative</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-5-absolute"><span class="nav-number">1.6.5.</span> <span class="nav-text">6.5 absolute</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-6-fixed"><span class="nav-number">1.6.6.</span> <span class="nav-text">6.6 fixed</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-7-position-relative-position-absolute"><span class="nav-number">1.6.7.</span> <span class="nav-text">6.7 position:relative + position:absolute</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-8-float"><span class="nav-number">1.6.8.</span> <span class="nav-text">6.8 float</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-9-百分比宽度"><span class="nav-number">1.6.9.</span> <span class="nav-text">6.9 百分比宽度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-媒体查询"><span class="nav-number">1.7.</span> <span class="nav-text">7. 媒体查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-display"><span class="nav-number">1.8.</span> <span class="nav-text">8. display</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#block"><span class="nav-number">1.8.1.</span> <span class="nav-text">block</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inline"><span class="nav-number">1.8.2.</span> <span class="nav-text">inline</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inline-block"><span class="nav-number">1.8.3.</span> <span class="nav-text">inline-block</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jack Wang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+
+  </div>
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  <script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+  
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.3.0"></script>
+
+  
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

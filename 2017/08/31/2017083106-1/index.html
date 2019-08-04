@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    save_scroll: false,
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    search: {
+      root: '/',
+      path: ''
+    },
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="python 学习笔记二函数1234567891011121314151617&amp;gt;&amp;gt;&amp;gt; def test(a , b=-99):  # 函数定义方法 函数参数可以设置默认值，赋参不完全时 使用默认参数···     global a   # 函数内定义全局变量...     if a &amp;gt; b:...         return True...     else:...">
+<meta name="keywords" content="后台">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python 学习笔记二">
+<meta property="og:url" content="http://yoursite.com/2017/08/31/2017083106-1/index.html">
+<meta property="og:site_name" content="叶落 知秋">
+<meta property="og:description" content="python 学习笔记二函数1234567891011121314151617&amp;gt;&amp;gt;&amp;gt; def test(a , b=-99):  # 函数定义方法 函数参数可以设置默认值，赋参不完全时 使用默认参数···     global a   # 函数内定义全局变量...     if a &amp;gt; b:...         return True...     else:...">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-08-31T01:22:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python 学习笔记二">
+<meta name="twitter:description" content="python 学习笔记二函数1234567891011121314151617&amp;gt;&amp;gt;&amp;gt; def test(a , b=-99):  # 函数定义方法 函数参数可以设置默认值，赋参不完全时 使用默认参数···     global a   # 函数内定义全局变量...     if a &amp;gt; b:...         return True...     else:...">
+  <link rel="canonical" href="http://yoursite.com/2017/08/31/2017083106-1/">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>python 学习笔记二 | 叶落 知秋</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">叶落 知秋</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+    </ul>
+</nav>
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/31/2017083106-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jack Wang">
+      <meta itemprop="description" content="个人知识总结">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶落 知秋">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">python 学习笔记二
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-08-31 17:16:23 / 修改时间：09:22:04" itemprop="dateCreated datePublished" datetime="2017-08-31T17:16:23+08:00">2017-08-31</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon"
+              >
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="python-学习笔记二"><a href="#python-学习笔记二" class="headerlink" title="python 学习笔记二"></a>python 学习笔记二</h1><h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; def test(a , b=-99):  # 函数定义方法 函数参数可以设置默认值，赋参不完全时 使用默认参数</span><br><span class="line">···     global a   # 函数内定义全局变量</span><br><span class="line">...     if a &gt; b:</span><br><span class="line">...         return True</span><br><span class="line">...     else:</span><br><span class="line">...         return False</span><br><span class="line">&gt;&gt;&gt; func(12, 24)</span><br><span class="line">··· a is 12 and b is 24 and c is 10</span><br><span class="line">··· &quot;&quot;&quot;</span><br><span class="line">    Function to find the length of the longest side of a right triangle.</span><br><span class="line"></span><br><span class="line">    :arg a: Side a of the triangle</span><br><span class="line">    :arg b: Side b of the triangle</span><br><span class="line"></span><br><span class="line">    :return: Length of the longest side c as float</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    # 文档字符串 说明如何使用字符串</span><br></pre></td></tr></table></figure>
+
+<h3 id="map-函数"><a href="#map-函数" class="headerlink" title="map 函数"></a>map 函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; lst = [1, 2, 3, 4, 5]</span><br><span class="line">&gt;&gt;&gt; def square(num):</span><br><span class="line">...     &quot;返回所给数字的平方.&quot;</span><br><span class="line">...     return num * num</span><br><span class="line">... # 接受一个函数和一个序列（迭代器）作为输入，</span><br><span class="line">··· # 然后对序列（迭代器）的每一个值应用这个函数，返回一个序列（迭代器），其包含应用函数后的结果</span><br><span class="line">&gt;&gt;&gt; print(list(map(square, lst)))</span><br><span class="line">[1, 4, 9, 16, 25]</span><br></pre></td></tr></table></figure>
+
+<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">import os                       # 包导入</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def parse_file(path):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    分析给定文本文件，返回其空格、制表符、行的相关信息</span><br><span class="line"></span><br><span class="line">    :arg path: 要分析的文本文件的路径</span><br><span class="line"></span><br><span class="line">    :return: 包含空格数、制表符数、行数的元组</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    fd = open(path)         # 文件打开</span><br><span class="line">                            # 可以接受两个参数 ，文件路径和读写模式 默认只读</span><br><span class="line">    i = 0                   # &quot;r&quot;，以只读模式打开，只能读取文件但不能编辑/删除文件</span><br><span class="line">    spaces = 0              # &quot;w&quot;，以写入模式打开，可以进行删除</span><br><span class="line">    tabs = 0                # &quot;a&quot;，追加模式，写入到文件中何数据添加到末尾</span><br><span class="line">    for i,line in enumerate(fd):       # fd.read() 读取整个文件</span><br><span class="line">        spaces += line.count(&apos; &apos;)      # fd.readline() 每次读取文件的一行</span><br><span class="line">        tabs += line.count(&apos;\t&apos;)       # fd.readlines() 读取所有行到一个列表中</span><br><span class="line">    # 现在关闭打开的文件               # fd.write() 向文件中写入数据</span><br><span class="line">    fd.close()      # 文件关闭    enumerate(fd) 可以同时得到索引位置 和对应值</span><br><span class="line"></span><br><span class="line">    # with open(&apos;sample.txt&apos;) as fobj 使用with操作文件不用手动关闭</span><br><span class="line"></span><br><span class="line">    # 以元组形式返回结果</span><br><span class="line">    return spaces, tabs, i + 1</span><br><span class="line"></span><br><span class="line">def main(path):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    函数用于打印文件分析结果</span><br><span class="line"></span><br><span class="line">    :arg path: 要分析的文本文件的路径</span><br><span class="line">    :return: 若文件存在则为 True，否则 False</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    if os.path.exists(path):</span><br><span class="line">        spaces, tabs, lines = parse_file(path)</span><br><span class="line">        print(&quot;Spaces &#123;&#125;. tabs &#123;&#125;. lines &#123;&#125;&quot;.format(spaces, tabs, lines))</span><br><span class="line">        return True</span><br><span class="line">    else:</span><br><span class="line">        return False</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    if len(sys.argv) &gt; 1:</span><br><span class="line">        main(sys.argv[1])</span><br><span class="line">    else:</span><br><span class="line">        sys.exit(-1)</span><br><span class="line">    sys.exit(0)</span><br></pre></td></tr></table></figure>
+
+<h2 id="python-异常处理"><a href="#python-异常处理" class="headerlink" title="python 异常处理"></a>python 异常处理</h2><h3 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a>常见错误</h3><ul>
+<li>SyntaxError 在 python3 中使用 python2</li>
+<li>行首多打了一个空格就会产生 IndentationError</li>
+<li>访问一个未定义的变量则会发生 NameError</li>
+<li>TypeError 也是一种经常出现的异常。当操作或函数应用于不适当类型的对象时引发</li>
+</ul>
+<h3 id="处理错误"><a href="#处理错误" class="headerlink" title="处理错误"></a>处理错误</h3><p>使用 try…except 块来处理任意异常。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    statements to be inside try clause</span><br><span class="line">    statement2</span><br><span class="line">    statement3</span><br><span class="line">    raise ValueError(&quot;A value error happened.&quot;) # 抛出异常</span><br><span class="line">    ...</span><br><span class="line">except ExceptionName:</span><br><span class="line">    statements to evaluated in case of ExceptionName happens</span><br><span class="line">finally:</span><br><span class="line">    print(&quot;dsa&quot;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class nameoftheclass(parent_class):   # class 创建类</span><br><span class="line">    statement1</span><br><span class="line">    statement2</span><br><span class="line">    statement3</span><br><span class="line">def __init__(self, realpart, imagpart):   # 类实例化操作自动调用 __init__()  该函数可以有参数  </span><br><span class="line">                                          # self 类的实例，定义类的方法中必须有</span><br><span class="line">    self.r = realpart</span><br><span class="line">    self.i = imagpar</span><br><span class="line">def f(self):</span><br><span class="line">    return &apos;hello world&apos;</span><br><span class="line">emp1 = nameoftheclass(&quot;Zara&quot;, 2000)   # 直接使用类的名称来进行实例化 从_init_ 函数接受参数</span><br></pre></td></tr></table></figure>
+
+<p>类中属性的修改</p>
+<p>类的属性</p>
+<p>__private_attrs：两个下划线开头，声明该属性为私有</p>
+<p>单下划线、双下划线、头尾双下划线说明：</p>
+<ul>
+<li><strong>foo</strong> : 定义的是特列方法，类似 <strong>init</strong>() 之类的。</li>
+<li>_foo : 单下划线开头的表示 protected 类型的变量,不能用于from module import *</li>
+<li>__foo : 双下划线的表示的是私有类型(private)的变量, 只能是允许这个类本身进行访问了。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>形式</th>
+<th>功能</th>
+<th>内置类</th>
+<th>内置类属性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>hasattr(class,attr)</td>
+<td>类中有属性返回true</td>
+<td>_dict_</td>
+<td>类的属性（包含一个字典，由类的数据属性组成）</td>
+</tr>
+<tr>
+<td>getattr(class,attr)</td>
+<td>返回类属性值</td>
+<td>_doc_  ; _bases_</td>
+<td>类的文档字符串;类的所有父类组成的元组</td>
+</tr>
+<tr>
+<td>setattr(class,attr)</td>
+<td>添加(设置)属性值</td>
+<td>_name_</td>
+<td>类名</td>
+</tr>
+<tr>
+<td>delattr(class,attr)</td>
+<td>删除属性</td>
+<td>_moudle_</td>
+<td>类定义所在的模块</td>
+</tr>
+</tbody></table>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>python中继承中的一些特点：</p>
+<p>1：在继承中基类的构造（_<em>init_</em>()方法）不会被自动调用，它需要在其派生类的构造中亲自专门调用。</p>
+<p>2：在调用基类的方法时，需要加上基类的类名前缀，且需要带上self参数变量。区别于在类中调用普通函数时并不需要带上self参数</p>
+<p>3：Python总是首先查找对应类型的方法，如果它不能在派生类中找到对应的方法，它才开始到基类中逐个查找。（先在本类中查找调用的方法，找不到才去基类中找）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line"></span><br><span class="line">class Parent:        # 定义父类</span><br><span class="line">   parentAttr = 100</span><br><span class="line">   def __init__(self):</span><br><span class="line">      print &quot;调用父类构造函数&quot;</span><br><span class="line"></span><br><span class="line">   def parentMethod(self):</span><br><span class="line">      print &apos;调用父类方法&apos;</span><br><span class="line"></span><br><span class="line">   def setAttr(self, attr):</span><br><span class="line">      Parent.parentAttr = attr</span><br><span class="line"></span><br><span class="line">   def getAttr(self):</span><br><span class="line">      print &quot;父类属性 :&quot;, Parent.parentAttr</span><br><span class="line"></span><br><span class="line">class Child(Parent): # 定义子类  继承支持多继承</span><br><span class="line">   def __init__(self):</span><br><span class="line">      print &quot;调用子类构造方法&quot;</span><br><span class="line"></span><br><span class="line">   def childMethod(self):</span><br><span class="line">      print &apos;调用子类方法 child method&apos;</span><br><span class="line"></span><br><span class="line">c = Child()          # 实例化子类</span><br><span class="line">c.childMethod()      # 调用子类的方法</span><br><span class="line">c.parentMethod()     # 调用父类方法</span><br><span class="line">c.setAttr(200)       # 再次调用父类的方法</span><br><span class="line">c.getAttr()          # 再次调用父类的方法</span><br></pre></td></tr></table></figure>
+
+<h2 id="python-代码规则"><a href="#python-代码规则" class="headerlink" title="python 代码规则"></a>python 代码规则</h2><ul>
+<li>与括号，冒号，分号，逗号保持紧凑</li>
+<li>切片内冒号两侧必须有相同的空格数量</li>
+<li>import 语句 放在文件顶部，在模块注释和文档字符串之下，顺序为标准库，第三方库，当前库</li>
+<li>在赋值操作符，比较操作符，和布尔运算符两侧加入空格</li>
+<li>包名应该写短，全部小写，不推荐使用下划线</li>
+<li>常量全部大写，单词之间以下划线分隔</li>
+<li>生成器的值不能重复使用</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/后台/" rel="tag"># 后台</a>
+          
+        </div>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2017/08/31/2017083106/" rel="next" title="mgo 驱动使用指南">
+                <i class="fa fa-chevron-left"></i> mgo 驱动使用指南
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+              <a href="/2017/08/31/2017083107/" rel="prev" title="MongoDB 操作">
+                MongoDB 操作 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+         
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.gif"
+      alt="Jack Wang">
+  <p class="site-author-name" itemprop="name">Jack Wang</p>
+  <div class="site-description motion-element" itemprop="description">个人知识总结</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/jackwangc" title="GitHub &rarr; https://github.com/jackwangc" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:wang.jie.jack6@gmail.com" title="E-Mail &rarr; mailto:wang.jie.jack6@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+  <div class="links-of-blogroll motion-element links-of-blogroll-block">
+    <div class="links-of-blogroll-title">
+      <i class="fa  fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://jackwangc.github.io/Docsify/#/" title="https://jackwangc.github.io/Docsify/#/" rel="noopener" target="_blank">Java 面试总结</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+          <div id = "music">
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 
+            src="//music.163.com/outchain/player?type=2&id=450795499&auto=1&height=66"></iframe>
+          </div>
+          
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#python-学习笔记二"><span class="nav-number">1.</span> <span class="nav-text">python 学习笔记二</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">1.1.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#map-函数"><span class="nav-number">1.1.1.</span> <span class="nav-text">map 函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件操作"><span class="nav-number">1.2.</span> <span class="nav-text">文件操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python-异常处理"><span class="nav-number">1.3.</span> <span class="nav-text">python 异常处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常见错误"><span class="nav-number">1.3.1.</span> <span class="nav-text">常见错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理错误"><span class="nav-number">1.3.2.</span> <span class="nav-text">处理错误</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类"><span class="nav-number">1.4.</span> <span class="nav-text">类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">1.5.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python-代码规则"><span class="nav-number">1.6.</span> <span class="nav-text">python 代码规则</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jack Wang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+
+  </div>
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  <script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+  
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.3.0"></script>
+
+  
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    save_scroll: false,
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    search: {
+      root: '/',
+      path: ''
+    },
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="helpersHtmlhelper ActionLink,RouteLink 超链接 12Html.ActionLink(&amp;quot;这是一个连接&amp;quot;, &amp;quot;Index&amp;quot;, &amp;quot;Home&amp;quot;, new &amp;#123; page = 1 &amp;#125;, new &amp;#123; id = &amp;quot;link1&amp;quot; &amp;#125;)  TextBox与Tex">
+<meta name="keywords" content="Asp.net Mvc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c# helpers">
+<meta property="og:url" content="http://yoursite.com/2017/11/10/20171110/index.html">
+<meta property="og:site_name" content="叶落 知秋">
+<meta property="og:description" content="helpersHtmlhelper ActionLink,RouteLink 超链接 12Html.ActionLink(&amp;quot;这是一个连接&amp;quot;, &amp;quot;Index&amp;quot;, &amp;quot;Home&amp;quot;, new &amp;#123; page = 1 &amp;#125;, new &amp;#123; id = &amp;quot;link1&amp;quot; &amp;#125;)  TextBox与Tex">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-11-11T19:21:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="c# helpers">
+<meta name="twitter:description" content="helpersHtmlhelper ActionLink,RouteLink 超链接 12Html.ActionLink(&amp;quot;这是一个连接&amp;quot;, &amp;quot;Index&amp;quot;, &amp;quot;Home&amp;quot;, new &amp;#123; page = 1 &amp;#125;, new &amp;#123; id = &amp;quot;link1&amp;quot; &amp;#125;)  TextBox与Tex">
+  <link rel="canonical" href="http://yoursite.com/2017/11/10/20171110/">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>c# helpers | 叶落 知秋</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">叶落 知秋</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+    </ul>
+</nav>
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/10/20171110/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jack Wang">
+      <meta itemprop="description" content="个人知识总结">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶落 知秋">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">c# helpers
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-11-10 21:43:01" itemprop="dateCreated datePublished" datetime="2017-11-10T21:43:01+08:00">2017-11-10</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-11-12 03:21:04" itemprop="dateModified" datetime="2017-11-12T03:21:04+08:00">2017-11-12</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon"
+              >
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="helpers"><a href="#helpers" class="headerlink" title="helpers"></a>helpers</h1><h2 id="Htmlhelper"><a href="#Htmlhelper" class="headerlink" title="Htmlhelper"></a>Htmlhelper</h2><ul>
+<li><p>ActionLink,RouteLink 超链接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Html.ActionLink(&quot;这是一个连接&quot;, &quot;Index&quot;, &quot;Home&quot;, new &#123; page = 1 &#125;, new &#123; id = &quot;link1&quot; &#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>TextBox与TextArea</p>
+<ul>
+<li><p>TextBox  </p>
+<p><code>Html.TextBox(&quot;input2&quot;,Model.CategoryName,new{ @style = &quot;width:300px;&quot; })</code></p>
+<p><code>&lt;input id=&quot;input2&quot; name=&quot;input2&quot; style=&quot;width:300px;&quot; type=&quot;text&quot; value=&quot;Beverages&quot; /&gt;</code></p>
+</li>
+<li><p>TextBoxFor(以强类型引用 model 属性 并经由 <strong>Lambda expression</strong> 的方式提供属性)</p>
+</li>
+<li><p>TextArea</p>
+<p><code>Html.TextAreaFor(a =&gt; a.CategoryName, 3, 3, null)</code></p>
+<p><code>&lt;textarea cols=&quot;3&quot; id=&quot;CategoryName&quot; name=&quot;CategoryName&quot; rows=&quot;3&quot;&gt;Electronic&lt;/textarea&gt;</code></p>
+</li>
+</ul>
+</li>
+<li><p>DisplayNameFor </p>
+<p>返回 model 中指定 Property 的名称</p>
+</li>
+<li><p>DisplayFor</p>
+<p>返回 model 中指定 Property</p>
+</li>
+<li><p>DisplayForModel </p>
+<p>返回 model 中的每一个 Property</p>
+</li>
+<li><p>Html.ValidationMessageFor</p>
+<p>自行指定验证信息内容或使用默认的验证信息 是否符合格式</p>
+</li>
+<li><p>EditorFor 编辑框</p>
+</li>
+<li><p>LabelFor 文本</p>
+</li>
+</ul>
+<h2 id="htmlhelper"><a href="#htmlhelper" class="headerlink" title="htmlhelper"></a>htmlhelper</h2><ol>
+<li><p>使用HtmlHelper生成超链接:</p>
+<p><code>&lt;%=Html.ActionLink(&quot;我是超链接&quot;,&quot;&quot;) %&gt;</code></p>
+<p>生成的结果：</p>
+<p><code>&lt;a href=&quot;/&quot;&gt;我是超链接&lt;/a&gt;</code></p>
+</li>
+<li><p>使用 HtmlHelper 生成表单:</p>
+<p><code>&lt;% Html.BeginForm(&quot;Index&quot;, &quot;Simple&quot;, FormMethod.Post, new { id = &quot;myForm&quot; }); %&gt; &lt;% Html.EndForm();%&gt;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@using (Ajax.BeginForm(&quot;action&quot;, &quot;controller&quot;, null,</span><br><span class="line">   new AjaxOptions</span><br><span class="line">   &#123;</span><br><span class="line">       UpdateTargetId = &quot;UserLogOnContainer&quot;,</span><br><span class="line">       HttpMethod = &quot;Post&quot;,</span><br><span class="line">       OnSuccess = &quot; &quot;,</span><br><span class="line">   &#125;))</span><br><span class="line">   &#123;&#125; //提交到指定controller下的action，提交方式为Post,异步更新模块ＩＤ为UserLogOnContainer</span><br></pre></td></tr></table></figure>
+
+<p>生成的结果：</p>
+<p><code>&lt;form action=&quot;/Index/Simple&quot; id=&quot;myForm&quot; method=&quot;post&quot;&gt;&lt;/form&gt;</code></p>
+</li>
+<li><p>使用 HtmlHelper 根据路由规则生成表单:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;% Html.BeginRouteForm(new &#123; controller = &quot;Simple&quot;, action = &quot;Demo&quot; &#125;); %&gt;</span><br><span class="line">&lt;%Html.EndForm(); %&gt;</span><br></pre></td></tr></table></figure>
+
+<p>生成的结果： </p>
+<p><code>&lt;form action=&quot;/Simple/Demo&quot; method=&quot;post&quot;&gt;&lt;/form&gt;</code></p>
+</li>
+<li><p>使用HtmlHelper生成一个复选框：</p>
+<p><code>&lt;%= Html.CheckBox(&quot;checkBox&quot;,new { id=&quot;myCheckBox&quot; })%&gt;复选框</code></p>
+</li>
+</ol>
+<p>生成的结果：</p>
+<p><code>&lt;input id=&quot;myCheckBox&quot; name=&quot;checkBox&quot; type=&quot;checkbox&quot; value=&quot;true&quot; /&gt;&lt;input name=&quot;checkBox&quot; type=&quot;hidden&quot; value=&quot;false&quot; /&gt;复选框</code></p>
+<ol start="5">
+<li>使用HtmlHelper生成上拉列表框:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;% var dropList = new List&lt;SelectListItem&gt;();</span><br><span class="line">     for (int i = 0; i &lt; 5; i++)</span><br><span class="line">    &#123;</span><br><span class="line">    var dropItem = new SelectListItem();</span><br><span class="line">    dropItem.Value = i.ToString();</span><br><span class="line">    dropItem.Text = i.ToString();</span><br><span class="line">    dropList.Add(dropItem);</span><br><span class="line">    &#125;</span><br><span class="line">        %&gt;</span><br><span class="line">&lt;%=Html.DropDownList(&quot;myList&quot;, dropList, new &#123; style = &quot;width:100px;&quot; &#125;)%&gt;</span><br></pre></td></tr></table></figure>
+
+<p>生成的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=&quot;myList&quot; name=&quot;myList&quot; style=&quot;width:100px;&quot;&gt;&lt;option value=&quot;0&quot;&gt;0&lt;/option&gt;</span><br><span class="line">&lt;option value=&quot;1&quot;&gt;1&lt;/option&gt;</span><br><span class="line">&lt;option value=&quot;2&quot;&gt;2&lt;/option&gt;</span><br><span class="line">&lt;option value=&quot;3&quot;&gt;3&lt;/option&gt;</span><br><span class="line">&lt;option value=&quot;4&quot;&gt;4&lt;/option&gt;</span><br><span class="line">&lt;/select&gt;</span><br><span class="line">```   </span><br><span class="line"></span><br><span class="line">6. 使用HtmlHelper生成隐藏域:</span><br><span class="line"></span><br><span class="line">`&lt;%=Html.Hidden(&quot;hidden&quot;) %&gt;`</span><br><span class="line"></span><br><span class="line">生成的结果： </span><br><span class="line">        </span><br><span class="line">`&lt;input id=&quot;hidden&quot; name=&quot;hidden&quot; type=&quot;hidden&quot; value=&quot;&quot; /&gt;`</span><br><span class="line"></span><br><span class="line">7. 使用HtmlHelper生成列表框：</span><br></pre></td></tr></table></figure>
+
+<p>&lt;%var list = new List<selectlistitem>();<br>    for (var i = 0; i &lt; 5; i++)<br>     {<br>    var item = new SelectListItem();<br>    item.Value = i.ToString();<br>    item.Text = i.ToString();<br>    list.Add(item);<br>          }<br>             %&gt;<br>&lt;%=Html.ListBox(“listBox”, list, new {style=”width:100px;” })%&gt;</selectlistitem></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">生成的结果：</span><br></pre></td></tr></table></figure>
+
+<p><select id="listBox" multiple="multiple" name="listBox" style="width:100px;"><option value="0">0</option></select></p>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+    
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">8. 使用HtmlHelper生成密码输入框:</span><br><span class="line"></span><br><span class="line">`&lt;%=Html.Password(&quot;password&quot;,&quot;longgel&quot;) %&gt;`</span><br><span class="line"></span><br><span class="line">生成的结果： </span><br><span class="line"></span><br><span class="line">`&lt;input id=&quot;password&quot; name=&quot;password&quot; type=&quot;password&quot; value=&quot;longgel&quot; /&gt;`</span><br><span class="line">       </span><br><span class="line">9. 使用HtmlHelper生成单选框:</span><br></pre></td></tr></table></figure>
+
+<p>&lt;%=Html.RadioButton(“radio”,”boy”,true) %&gt;男<br>&lt;%=Html.RadioButton(“radio”,”girl”,false) %&gt;女</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">生成的结果：</span><br></pre></td></tr></table></figure>
+
+<p><input checked="checked" id="radio" name="radio" type="radio" value="boy">男<br><input id="radio" name="radio" type="radio" value="girl">女</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">10. 使用HtmlHelper生成部分视图（用户控件）</span><br><span class="line"></span><br><span class="line">`&lt;% Html.RenderPartial(&quot;PartialView&quot;); %&gt;`</span><br><span class="line"></span><br><span class="line">生成的结果： </span><br><span class="line"></span><br><span class="line">`&lt;span style=&quot;background-color:Red&quot;&gt;Hi，我是部分视图（用户控件）&lt;/span&gt;`</span><br><span class="line"></span><br><span class="line">11. 使用HtmlHelper根据路由规则生成超链接：</span><br><span class="line"></span><br><span class="line">`&lt;%= Html.RouteLink(&quot;我是由路由生成的超链接&quot;,new &#123;controller=&quot;Simple&quot;,action=&quot;Index&quot;&#125;) %&gt;`</span><br><span class="line"></span><br><span class="line">生成的结果： </span><br><span class="line"></span><br><span class="line">`&lt;a href=&quot;/&quot;&gt;我是由路由生成的超链接&lt;/a&gt;`</span><br><span class="line"></span><br><span class="line">12. 使用HtmlHelper生成富文本框：</span><br><span class="line"></span><br><span class="line">`&lt;%=Html.TextArea(&quot;myTxtArea&quot;,new&#123;style=&quot;width:300px; height:100px;&quot;&#125;) %&gt;`</span><br><span class="line"></span><br><span class="line">生成的结果： </span><br><span class="line"></span><br><span class="line">`&lt;textarea cols=&quot;20&quot; id=&quot;myTxtArea&quot; name=&quot;myTxtArea&quot; rows=&quot;2&quot; style=&quot;width:300px; height:100px;&quot;&gt;</span><br><span class="line">&lt;/textarea&gt;`</span><br><span class="line">        </span><br><span class="line">13. 使用HtmlHelper生成文本框：</span><br><span class="line"></span><br><span class="line">`&lt;%=Html.TextBox(&quot;myTxtBox&quot;,&quot;我是文本框&quot;)%&gt;`</span><br><span class="line"></span><br><span class="line">生成的结果： </span><br><span class="line"></span><br><span class="line">`&lt;input id=&quot;myTxtBox&quot; name=&quot;myTxtBox&quot; type=&quot;text&quot; value=&quot;我是文本框&quot; /&gt;`</span><br><span class="line"></span><br><span class="line">## urlhelper</span><br><span class="line"></span><br><span class="line">1. 使用Action方法生成URL(Controller将是默认的)</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;a href=&apos;&lt;%= Url.Action(&quot;DemoAction&quot;) %&gt;&apos; title=&quot;&quot;&gt;指定Action名称生成URL&lt;/a&gt;
+
+&lt;a href=&apos;&lt;%= Url.Action(&quot;DemoAction&quot;,&quot;id&quot;) %&gt;&apos; title=&quot;&quot;&gt;指定Action和一个RouteData(参数)生成URL&lt;/a&gt;
+
+&lt;a href=&apos;&lt;%= Url.Action(&quot;DemoAction&quot;, new {id=2,category=5 })%&gt;&apos; title=&quot;&quot;&gt;指定Action名称和多个参数生成URL&lt;/a&gt;
+
+&lt;a href=&apos;&lt;%= Url.Action(&quot;DemoAction&quot;,&quot;DemoController&quot;)%&gt;&apos; title=&quot;&quot;&gt;指定Action和Controller生成URL&lt;/a&gt;
+
+&lt;a href=&apos;&lt;%= Url.Action(&quot;DemoAction&quot;,&quot;DemoController&quot;,&quot;id&quot;)%&gt;&apos; title=&quot;&quot;&gt;指定Action,Controller和一个参数生成URL&lt;/a&gt;
+
+&lt;a href=&apos;&lt;%= Url.Action(&quot;DemoAction&quot;,&quot;DemoController&quot;, new {id=2,category=5 })%&gt;&apos; title=&quot;&quot;&gt;指定Action,Controller和多个参数生成URL&lt;/a&gt;
+
+&lt;a href=&apos;&lt;%= Url.Action(&quot;DemoAction&quot;,&quot;DemoController&quot;, new {id=2,category=5 },&quot;https&quot;)%&gt;&apos; title=&quot;&quot;&gt;指定传输协议生成URL&lt;/a&gt;
+
+&lt;% var rvd = new RouteValueDictionary();
+
+   rvd.Add(&quot;id&quot;, 5);
+
+   rvd.Add(&quot;category&quot;, 2);
+
+   var tmp = 5;  %&gt;
+
+&lt;a href=&apos;&lt;%= Url.Action(&quot;DemoAction&quot;,&quot;DemoController&quot;, rvd,&quot;https&quot;,&quot;local&quot;)%&gt;&apos; title=&quot;&quot;&gt;指定主机名生成URL&lt;/a&gt;  
+     生成的结果：       </code></pre><p>   <a href="/simple/DemoAction" title>指定Action名称生成URL</a></p>
+<pre><code>&lt;a href=&apos;/id/DemoAction&apos; title=&quot;&quot;&gt;指定Action和一个RouteData(参数)生成URL&lt;/a&gt;
+
+&lt;a href=&apos;/simple/DemoAction?id=2&amp;category=5&apos; title=&quot;&quot;&gt;指定Action名称和多个参数生成URL&lt;/a&gt;
+
+&lt;a href=&apos;/DemoController/DemoAction&apos; title=&quot;&quot;&gt;指定Action和Controller生成URL&lt;/a&gt;
+
+&lt;a href=&apos;/DemoController/DemoAction?Length=2&apos; title=&quot;&quot;&gt;指定Action,Controller和一个参数生成URL&lt;/a&gt;
+
+&lt;a href=&apos;/DemoController/DemoAction?id=2&amp;category=5&apos; title=&quot;&quot;&gt;指定Action,Controller和多个参数生成URL&lt;/a&gt;
+
+&lt;a href=&apos;https://localhost/DemoController/DemoAction?id=2&amp;category=5&apos; title=&quot;&quot;&gt;指定传输协议生成URL&lt;/a&gt;
+
+&lt;a href=&apos;https://local/DemoController/DemoAction?id=5&amp;category=2&apos; title=&quot;&quot;&gt;指定主机名生成URL&lt;/a&gt;</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2. 使用Content方法将虚拟(相对)路径生成为绝对路径</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;a href=&apos;&lt;%= Url.Content(&quot;~/DemoController/DemoAction&quot;)%&gt;&apos; title=&quot;&quot;&gt;指定虚拟路径生成绝对路径&lt;/a&gt;</code></pre><p><a href="/DemoController/DemoAction" title>指定虚拟路径生成绝对路径</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3. 使用Encode加密URL</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;a href=&apos;&lt;%= Url.Encode(&quot;http://www.cnblogs.com/longgel/&quot;)%&gt;&apos; title=&quot;&quot;&gt;加密过的URL连接&lt;/a&gt;  
+     生成的结果：  
+
+&lt;a href=&apos;http%3a%2f%2fwww.cnblogs.com%2flonggel%2f&apos; title=&quot;&quot;&gt;加密过的URL连接&lt;/a&gt; </code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">4. 使用RouteUrl生成URL</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;a href=&apos;&lt;%= Url.RouteUrl(tmp)%&gt;&apos; title=&quot;&quot;&gt;指定RouteValue生成URL&lt;/a&gt;
+
+&lt;a href=&apos;&lt;%= Url.RouteUrl(&quot;Default&quot;)%&gt;&apos; title=&quot;&quot;&gt;指定RouteName生成URL&lt;/a&gt;
+
+&lt;a href=&apos;&lt;%= Url.RouteUrl(rvd)%&gt;&apos; title=&quot;&quot;&gt;指定多个参数生成URL&lt;/a&gt;
+
+&lt;a href=&apos;&lt;%= Url.RouteUrl(&quot;Default&quot;,tmp) %&gt;&apos; title=&quot;&quot;&gt;指定路由规则名和单个路由值&lt;/a&gt;
+
+&lt;a href=&apos;&lt;%= Url.RouteUrl(&quot;Default&quot;,rvd) %&gt;&apos; title=&quot;&quot;&gt;指定路由规则名和多个路由值&lt;/a&gt;
+
+&lt;a href=&apos;&lt;%= Url.RouteUrl(&quot;Default&quot;,tmp,&quot;https&quot;) %&gt;&apos; title=&quot;&quot;&gt;指定传输协议&lt;/a&gt;
+
+&lt;a href=&apos;&lt;%= Url.RouteUrl(&quot;Default&quot;,rvd,&quot;https&quot;,&quot;www.cnblogs.com&quot;) %&gt;&apos; title=&quot;&quot;&gt;指定主机名&lt;/a&gt;  
+
+生成的结果：         
+
+&lt;a href=&apos;/simple/urlhelperdemo&apos; title=&quot;&quot;&gt;指定RouteValue生成URL&lt;/a&gt;
+
+&lt;a href=&apos;/Longgel/Index/Id&apos; title=&quot;&quot;&gt;指定RouteName生成URL&lt;/a&gt;
+
+&lt;a href=&apos;/simple/urlhelperdemo?id=5&amp;category=2&apos; title=&quot;&quot;&gt;指定多个参数生成URL&lt;/a&gt;&lt;br /&gt;/Longgel/Index/Id
+
+&lt;a href=&apos;/Longgel/Index/Id&apos; title=&quot;&quot;&gt;指定路由规则名和单个路由值&lt;/a&gt;
+
+&lt;a href=&apos;/Longgel/Index/Id?id=5&amp;category=2&apos; title=&quot;&quot;&gt;指定路由规则名和多个路由值&lt;/a&gt;
+
+&lt;a href=&apos;https://localhost/Longgel/Index/Id&apos; title=&quot;&quot;&gt;指定传输协议&lt;/a&gt;
+
+&lt;a href=&apos;https://www.cnblogs.com/Longgel/Index/Id?id=5&amp;category=2&apos; title=&quot;&quot;&gt;指定主机名&lt;/a&gt;</code></pre><p>```</p>
+<h2 id="AJAX-HELP"><a href="#AJAX-HELP" class="headerlink" title="AJAX HELP"></a>AJAX HELP</h2><p>用法与 htmlhelp 相同 <code>@Ajax.ActionLink</code></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/Asp-net-Mvc/" rel="tag"># Asp.net Mvc</a>
+          
+        </div>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2017/11/10/c-help/" rel="next" title="c# controller">
+                <i class="fa fa-chevron-left"></i> c# controller
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+              <a href="/2017/11/10/20171111001/" rel="prev" title="EF">
+                EF <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+         
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.gif"
+      alt="Jack Wang">
+  <p class="site-author-name" itemprop="name">Jack Wang</p>
+  <div class="site-description motion-element" itemprop="description">个人知识总结</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/jackwangc" title="GitHub &rarr; https://github.com/jackwangc" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:wang.jie.jack6@gmail.com" title="E-Mail &rarr; mailto:wang.jie.jack6@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+  <div class="links-of-blogroll motion-element links-of-blogroll-block">
+    <div class="links-of-blogroll-title">
+      <i class="fa  fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://jackwangc.github.io/Docsify/#/" title="https://jackwangc.github.io/Docsify/#/" rel="noopener" target="_blank">Java 面试总结</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+          <div id = "music">
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 
+            src="//music.163.com/outchain/player?type=2&id=450795499&auto=1&height=66"></iframe>
+          </div>
+          
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#helpers"><span class="nav-number">1.</span> <span class="nav-text">helpers</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Htmlhelper"><span class="nav-number">1.1.</span> <span class="nav-text">Htmlhelper</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#htmlhelper"><span class="nav-number">1.2.</span> <span class="nav-text">htmlhelper</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AJAX-HELP"><span class="nav-number">1.3.</span> <span class="nav-text">AJAX HELP</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jack Wang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+
+  </div>
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  <script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+  
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.3.0"></script>
+
+  
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

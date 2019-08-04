@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    save_scroll: false,
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    search: {
+      root: '/',
+      path: ''
+    },
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="Controller数据传递ViewBag ViewData ViewBag＆的相似之处ViewData：  帮助您从控制器移动到查看时保持数据。 用于将数据从控制器传递到相应的视图。 寿命短意味着null重定向发生时的价值。这是因为他们的目标是提供一种在控制器和视图之间进行通信的方式。这是服务器调用中的通信机制。   ViewBag＆之间的区别ViewData：  ViewData是dictio">
+<meta name="keywords" content="Asp.net Mvc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c# controller">
+<meta property="og:url" content="http://yoursite.com/2017/11/10/c-help/index.html">
+<meta property="og:site_name" content="叶落 知秋">
+<meta property="og:description" content="Controller数据传递ViewBag ViewData ViewBag＆的相似之处ViewData：  帮助您从控制器移动到查看时保持数据。 用于将数据从控制器传递到相应的视图。 寿命短意味着null重定向发生时的价值。这是因为他们的目标是提供一种在控制器和视图之间进行通信的方式。这是服务器调用中的通信机制。   ViewBag＆之间的区别ViewData：  ViewData是dictio">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-11-11T19:24:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="c# controller">
+<meta name="twitter:description" content="Controller数据传递ViewBag ViewData ViewBag＆的相似之处ViewData：  帮助您从控制器移动到查看时保持数据。 用于将数据从控制器传递到相应的视图。 寿命短意味着null重定向发生时的价值。这是因为他们的目标是提供一种在控制器和视图之间进行通信的方式。这是服务器调用中的通信机制。   ViewBag＆之间的区别ViewData：  ViewData是dictio">
+  <link rel="canonical" href="http://yoursite.com/2017/11/10/c-help/">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>c# controller | 叶落 知秋</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">叶落 知秋</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+    </ul>
+</nav>
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/10/c-help/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jack Wang">
+      <meta itemprop="description" content="个人知识总结">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶落 知秋">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">c# controller
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-11-10 21:36:13" itemprop="dateCreated datePublished" datetime="2017-11-10T21:36:13+08:00">2017-11-10</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-11-12 03:24:26" itemprop="dateModified" datetime="2017-11-12T03:24:26+08:00">2017-11-12</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon"
+              >
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h1><h2 id="数据传递"><a href="#数据传递" class="headerlink" title="数据传递"></a>数据传递</h2><h3 id="ViewBag-ViewData"><a href="#ViewBag-ViewData" class="headerlink" title="ViewBag ViewData"></a>ViewBag ViewData</h3><ul>
+<li><p>ViewBag＆的相似之处ViewData：</p>
+<ul>
+<li>帮助您从控制器移动到查看时保持数据。</li>
+<li>用于将数据从控制器传递到相应的视图。</li>
+<li>寿命短意味着null重定向发生时的价值。这是因为他们的目标是提供一种在控制器和视图之间进行通信的方式。这是服务器调用中的通信机制。</li>
+</ul>
+</li>
+<li><p>ViewBag＆之间的区别ViewData：</p>
+<ul>
+<li>ViewData是dictionary从ViewDataDictionary类派生的对象，可以使用strings作为关键字来访问。</li>
+<li>ViewBag 是一个动态属性，它利用了C＃4.0中的新动态特性。</li>
+<li>ViewData需要对复杂数据类型进行类型转换，并检查null值以避免错误。</li>
+<li>ViewBag 不需要对复杂数据类型进行类型转换。</li>
+</ul>
+</li>
+<li><p>用法</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public ActionResult Index()</span><br><span class="line">&#123;</span><br><span class="line">    ViewBag.Name = &quot;Monjurul Habib&quot;;</span><br><span class="line">    return View();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public ActionResult Index()</span><br><span class="line">&#123;</span><br><span class="line">    ViewData[&quot;Name&quot;] = &quot;Monjurul Habib&quot;;</span><br><span class="line">    return View();</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">## view</span><br><span class="line"></span><br><span class="line">@ViewBag.Name </span><br><span class="line">@ViewData[&quot;Name&quot;]</span><br></pre></td></tr></table></figure>
+
+<h3 id="TempData"><a href="#TempData" class="headerlink" title="TempData"></a>TempData</h3><p>TempData也是一个从TempDataDictionary类派生的字典，存储在short lives session中，它是一个字符串键和对象值。 不同之处在于对象的生命周期。</p>
+<p>TempData保存HTTP请求的信息。 这只意味着从一个页面到另一个页面。 这也适用于302/303重定向，因为它在相同的HTTP请求中。 当您从一个控制器移动到另一个控制器或从一个操作移动到另一个操作时，它有助于保持数据。 换句话说，当您重定向时，“Tempdata”有助于维护这些重定向之间的数据。 </p>
+<p>它在内部使用会话变量。 当前和后续请求期间临时数据的使用仅意味着在确定下一个请求将重定向到下一个视图时使用它。 它需要对复杂数据类型进行类型转换，并检查空值以避免错误。 </p>
+<p>它通常用于存储一次性消息，如错误消息，验证消息。</p>
+<h3 id="多-model-传递"><a href="#多-model-传递" class="headerlink" title="多 model 传递"></a>多 model 传递</h3><ul>
+<li><p>多 model 传递 </p>
+<p><code>var products = db.Products.Include(p =&gt; p.model1).Include( p=&gt; p.model2)</code> <code>return View(products.ToList())</code></p>
+</li>
+<li><p>SelectList 类</p>
+</li>
+</ul>
+<blockquote>
+<p>给 dropdownlist listboex 等列表使用 辅助类时必须通过 selectlist 类来封装</p>
+</blockquote>
+<p><code>public SelectList(IEumerable items, string dataValueField,string dataTextField)</code></p>
+<ul>
+<li>viewModel</li>
+</ul>
+<p>@model 文件中只允许有一个 model 语句</p>
+<ul>
+<li><p>viewModel 类</p>
+<p>建立步骤 </p>
+<ol>
+<li>在Models 目录下新建 ViewModels 类</li>
+<li>命名习惯： 传递对象名称 加上 ViewModel 结尾</li>
+<li>在该类中定义你所需要的类和属性</li>
+</ol>
+</li>
+</ul>
+<h2 id="ActionResult"><a href="#ActionResult" class="headerlink" title="ActionResult"></a>ActionResult</h2><blockquote>
+<p>每个 Controller 的 Action 方法操作完成后，最终结果一定要返回一个实现 ActionResult 抽象类的类型，返回类型最好使用 actionResult</p>
+</blockquote>
+<h3 id="继承自-ActionResult-类型"><a href="#继承自-ActionResult-类型" class="headerlink" title="继承自 ActionResult 类型"></a>继承自 ActionResult 类型</h3><table>
+<thead>
+<tr>
+<th>继承自 ActionResult 类型</th>
+<th>Controller 方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ContentResult</td>
+<td>Content()</td>
+<td>返回文字内容</td>
+</tr>
+<tr>
+<td>FileResult</td>
+<td>File()</td>
+<td>输出文件内容</td>
+</tr>
+<tr>
+<td>HttpNotFoundResult</td>
+<td>HttpNotFound()</td>
+<td>响应 HTTP 状态代码</td>
+</tr>
+<tr>
+<td>JavaScriptResult</td>
+<td>JavaScript()</td>
+<td>输出 JavaScript 内容</td>
+</tr>
+<tr>
+<td>JsonResult</td>
+<td>Json()</td>
+<td>输出 Json 内容</td>
+</tr>
+<tr>
+<td>ViewResult</td>
+<td>View()</td>
+<td>输出 Html 内容</td>
+</tr>
+<tr>
+<td>PartialViewResult</td>
+<td>ParticalView()</td>
+<td>输出部分 Html 内容</td>
+</tr>
+<tr>
+<td>RedirectReslut</td>
+<td>Redirct()</td>
+<td>进行 url 重定向</td>
+</tr>
+<tr>
+<td>RedirectToRouteResult</td>
+<td>RedirectToAction()</td>
+<td>使用路由系统进行 url 重定向</td>
+</tr>
+</tbody></table>
+<h3 id="JsonResult"><a href="#JsonResult" class="headerlink" title="JsonResult"></a>JsonResult</h3><p>列表化数据为 JSON 格式 <code>return Json(person,JsonRequestBehavior.AllowGet)</code></p>
+<p>接受 JSON 并列表化，接受到参数，返回<code>return Json(person,JsonRequestBehavior.AllowGet)</code></p>
+<h2 id="Action-Filters"><a href="#Action-Filters" class="headerlink" title="Action Filters"></a>Action Filters</h2><blockquote>
+<p>进入 Action 方法之前与离开 Action 方法之后进行的操作</p>
+</blockquote>
+<h2 id="Model-Binding"><a href="#Model-Binding" class="headerlink" title="Model Binding"></a>Model Binding</h2><h3 id="View向Controller中传递数据的方式"><a href="#View向Controller中传递数据的方式" class="headerlink" title="View向Controller中传递数据的方式"></a>View向Controller中传递数据的方式</h3><ul>
+<li>QueryString</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;button id=&quot;btn&quot;&gt;提交&lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    $(function () &#123;</span><br><span class="line">        $(&apos;#btn&apos;).click(function () &#123;</span><br><span class="line">            //url不区分大小写</span><br><span class="line">            location.href = &quot;/home/getvalue?method=querystring&quot;;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">// controller</span><br><span class="line">public void GetValue()</span><br><span class="line">&#123;</span><br><span class="line">    //Request属性可用来获取querystring,form表单以及cookie中的值</span><br><span class="line">    var querystring = Request[&quot;method&quot;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>RouteData <code>&quot;/home/getvalue/100&quot;</code></p>
+</li>
+<li><p>ModelBinding </p>
+</li>
+</ul>
+<blockquote>
+<p>Model绑定体现在从当前请求提取相应的数据绑定到目标Action方法的同名参数（不区分大小写）中。对于这样的一个Action，如果是Post请求，MVC会尝试将Form（注意，这里的Form不是指html中的<form>表单，而是Post方法发送数据的方式，若我们使用开发者工具查看Post方式发送的请求信息，会看到Form Data一栏）中的值赋值到Action参数中，如果是get请求，MVC会尝试将QueryString的值赋值到Action参数中</form></p>
+</blockquote>
+<ol>
+<li>Form</li>
+</ol>
+<p>form表单形式是常见的向后端发送数据的方式，但是在提交数据时只会提交form表单内部具有name属性的input,textarea,select标签的value值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;/home/getvalue&quot; method=&quot;post&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot; name=&quot;username&quot; /&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot; name=&quot;age&quot; /&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot; name=&quot;button&quot; value=&quot;提交&quot; /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line"></span><br><span class="line">// controller</span><br><span class="line"></span><br><span class="line">public void GetValue()</span><br><span class="line">&#123;</span><br><span class="line">    var name = Request[&quot;username&quot;];</span><br><span class="line">    var age = Request[&quot;age&quot;];</span><br><span class="line">    var btn = Request[&quot;button&quot;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>使用和Action参数同名的变量进行传递</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;button id=&quot;btn&quot;&gt;传递数据&lt;/button&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    $(function () &#123;</span><br><span class="line">        $(&apos;#btn&apos;).click(function () &#123;</span><br><span class="line">            $.ajax(&#123;</span><br><span class="line">                &apos;type&apos;: &apos;post&apos;, &apos;url&apos;: &apos;/home/getdata&apos;,</span><br><span class="line">                 //传递的数据也可以是序列化之后的json格式数据</span><br><span class="line">                 //如，上面使用form表单提交数据就可以使用jquery中的serialize()方法将表单进行序列化之后在提交</span><br><span class="line">                 //data:$(&apos;#form&apos;).serialize()</span><br><span class="line">                &apos;data&apos;: &#123; username: &apos;雪飞鸿&apos;, age: &apos;24&apos; &#125;,</span><br><span class="line">                error: function (message) &#123;</span><br><span class="line">                    alert(&apos;error!&apos;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">// Controller</span><br><span class="line"></span><br><span class="line">public void GetData(string username, int age)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Cookie</li>
+</ul>
+<blockquote>
+<p>这里引用jquery.cookie插件来进行cookie的操作</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button id=&quot;btn&quot;&gt;提交&lt;/button&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        $(function () &#123;</span><br><span class="line">            //向cookie中写入值</span><br><span class="line">            $.cookie(&apos;key&apos;, &apos;jscookie&apos;);</span><br><span class="line"></span><br><span class="line">            $(&apos;#btn&apos;).click(function () &#123;</span><br><span class="line">                location.href = &quot;/home/getvalue&quot;;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">//Controller</span><br><span class="line"></span><br><span class="line">public void GetValue()</span><br><span class="line">&#123;</span><br><span class="line">    var cookie = Request[&quot;key&quot;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Controller向View中传值"><a href="#Controller向View中传值" class="headerlink" title="Controller向View中传值"></a>Controller向View中传值</h3><ul>
+<li>Json</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">public ActionResult Index()</span><br><span class="line">&#123;</span><br><span class="line">    return View();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public JsonResult SendData()</span><br><span class="line">&#123;</span><br><span class="line">    return Json(new &#123; UserName = &quot;雪飞鸿&quot;, Age = 24 &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// view</span><br><span class="line"></span><br><span class="line">&lt;p id=&quot;message&quot;&gt;&lt;/p&gt;</span><br><span class="line">    &lt;button id=&quot;btn&quot;&gt;获取数据&lt;/button&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        $(function () &#123;</span><br><span class="line">            $(&apos;#btn&apos;).click(function () &#123;</span><br><span class="line">                $.ajax(&#123;</span><br><span class="line">                    &apos;url&apos;: &apos;/home/senddata&apos;, &apos;type&apos;: &apos;post&apos;,</span><br><span class="line">                    success: function (data) &#123;</span><br><span class="line">                        $(&apos;#message&apos;).html(&apos;用户名：&apos; + data.UserName + &quot;&lt;br/&gt;年龄：&quot; + data.Age);</span><br><span class="line">                    &#125;,</span><br><span class="line">                    error: function (message) &#123;</span><br><span class="line">                        alert(&apos;error:&apos; + message.statusText);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>匿名类型</li>
+</ul>
+<blockquote>
+<p>使用Newtonsoft将匿名类型转换为json格式即可解决该问题。<br>使用NuGet引入Newtonsoft.Json包</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public ActionResult Index()</span><br><span class="line">&#123;</span><br><span class="line">    string json = JsonConvert.SerializeObject(new &#123; UserName = &quot;雪飞鸿&quot;, Age = 24 &#125;);</span><br><span class="line">    //也可以直接序列化JSON格式的字符串</span><br><span class="line">    //dynamic jsonObj = JsonConvert.DeserializeObject(&quot;&#123; UserName : \&quot;雪飞鸿\&quot;, Age : 24 &#125;&quot;);</span><br><span class="line">    dynamic jsonObj = JsonConvert.DeserializeObject(json);</span><br><span class="line">    return View(jsonObj);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// view</span><br><span class="line"></span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot; /&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;p&gt;用户名：@Model.UserName&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;年龄：@Model.Age&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>cookie</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public ActionResult Index()</span><br><span class="line">&#123;</span><br><span class="line">    Response.SetCookie(new HttpCookie(&quot;key&quot;, &quot;cookie&quot;));</span><br><span class="line">    return View();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;p id=&quot;message&quot;&gt;&lt;/p&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        $(function () &#123;</span><br><span class="line">            var message = $.cookie(&apos;key&apos;);</span><br><span class="line">            $(&apos;#message&apos;).text(message);</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/Asp-net-Mvc/" rel="tag"># Asp.net Mvc</a>
+          
+        </div>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2017/08/31/2017083108/" rel="next" title="linux 下配置 ss">
+                <i class="fa fa-chevron-left"></i> linux 下配置 ss
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+              <a href="/2017/11/10/20171110/" rel="prev" title="c# helpers">
+                c# helpers <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+         
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.gif"
+      alt="Jack Wang">
+  <p class="site-author-name" itemprop="name">Jack Wang</p>
+  <div class="site-description motion-element" itemprop="description">个人知识总结</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/jackwangc" title="GitHub &rarr; https://github.com/jackwangc" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:wang.jie.jack6@gmail.com" title="E-Mail &rarr; mailto:wang.jie.jack6@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+  <div class="links-of-blogroll motion-element links-of-blogroll-block">
+    <div class="links-of-blogroll-title">
+      <i class="fa  fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://jackwangc.github.io/Docsify/#/" title="https://jackwangc.github.io/Docsify/#/" rel="noopener" target="_blank">Java 面试总结</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+          <div id = "music">
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 
+            src="//music.163.com/outchain/player?type=2&id=450795499&auto=1&height=66"></iframe>
+          </div>
+          
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Controller"><span class="nav-number">1.</span> <span class="nav-text">Controller</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据传递"><span class="nav-number">1.1.</span> <span class="nav-text">数据传递</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ViewBag-ViewData"><span class="nav-number">1.1.1.</span> <span class="nav-text">ViewBag ViewData</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TempData"><span class="nav-number">1.1.2.</span> <span class="nav-text">TempData</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多-model-传递"><span class="nav-number">1.1.3.</span> <span class="nav-text">多 model 传递</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ActionResult"><span class="nav-number">1.2.</span> <span class="nav-text">ActionResult</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#继承自-ActionResult-类型"><span class="nav-number">1.2.1.</span> <span class="nav-text">继承自 ActionResult 类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JsonResult"><span class="nav-number">1.2.2.</span> <span class="nav-text">JsonResult</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Action-Filters"><span class="nav-number">1.3.</span> <span class="nav-text">Action Filters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Model-Binding"><span class="nav-number">1.4.</span> <span class="nav-text">Model Binding</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#View向Controller中传递数据的方式"><span class="nav-number">1.4.1.</span> <span class="nav-text">View向Controller中传递数据的方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Controller向View中传值"><span class="nav-number">1.4.2.</span> <span class="nav-text">Controller向View中传值</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jack Wang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+
+  </div>
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  <script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+  
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.3.0"></script>
+
+  
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

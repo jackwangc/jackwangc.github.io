@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    save_scroll: false,
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    search: {
+      root: '/',
+      path: ''
+    },
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="计算机网络概述学习计算机网络就是学习计算机网络模型中的网络协议 网络模型 OSI七层模型 物理层、数据链路层、网络层、传输层、会话层、表示层、应用层。  TCP/IP四层协议 网络接口层、 网际层、运输层、 应用层。  TCP/IP五层协议 物理层、数据链路层、网络层、运输层、 应用层。   OSI七层模型 物理层 物理层处于OSI的最底层，是整个开放系统的基础。物理层涉及通信信道上传输的原始比特">
+<meta name="keywords" content="网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络基础知识">
+<meta property="og:url" content="http://yoursite.com/2017/11/11/2017111101/index.html">
+<meta property="og:site_name" content="叶落 知秋">
+<meta property="og:description" content="计算机网络概述学习计算机网络就是学习计算机网络模型中的网络协议 网络模型 OSI七层模型 物理层、数据链路层、网络层、传输层、会话层、表示层、应用层。  TCP/IP四层协议 网络接口层、 网际层、运输层、 应用层。  TCP/IP五层协议 物理层、数据链路层、网络层、运输层、 应用层。   OSI七层模型 物理层 物理层处于OSI的最底层，是整个开放系统的基础。物理层涉及通信信道上传输的原始比特">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://om0ttwn6c.bkt.clouddn.com/1361799047_8707.png">
+<meta property="og:updated_time" content="2017-11-11T03:59:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机网络基础知识">
+<meta name="twitter:description" content="计算机网络概述学习计算机网络就是学习计算机网络模型中的网络协议 网络模型 OSI七层模型 物理层、数据链路层、网络层、传输层、会话层、表示层、应用层。  TCP/IP四层协议 网络接口层、 网际层、运输层、 应用层。  TCP/IP五层协议 物理层、数据链路层、网络层、运输层、 应用层。   OSI七层模型 物理层 物理层处于OSI的最底层，是整个开放系统的基础。物理层涉及通信信道上传输的原始比特">
+<meta name="twitter:image" content="http://om0ttwn6c.bkt.clouddn.com/1361799047_8707.png">
+  <link rel="canonical" href="http://yoursite.com/2017/11/11/2017111101/">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>计算机网络基础知识 | 叶落 知秋</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">叶落 知秋</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+    </ul>
+</nav>
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/11/2017111101/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jack Wang">
+      <meta itemprop="description" content="个人知识总结">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="叶落 知秋">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">计算机网络基础知识
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-11-11 19:28:38 / 修改时间：11:59:24" itemprop="dateCreated datePublished" datetime="2017-11-11T19:28:38+08:00">2017-11-11</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon"
+              >
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="计算机网络概述"><a href="#计算机网络概述" class="headerlink" title="计算机网络概述"></a>计算机网络概述</h1><h2 id="学习计算机网络就是学习计算机网络模型中的网络协议"><a href="#学习计算机网络就是学习计算机网络模型中的网络协议" class="headerlink" title="学习计算机网络就是学习计算机网络模型中的网络协议"></a>学习计算机网络就是学习计算机网络模型中的网络协议</h2><p><img src="http://om0ttwn6c.bkt.clouddn.com/1361799047_8707.png" alt="image"></p>
+<h2 id="网络模型"><a href="#网络模型" class="headerlink" title="网络模型"></a>网络模型</h2><ul>
+<li><p>OSI七层模型</p>
+<p>物理层、数据链路层、网络层、传输层、会话层、表示层、应用层。</p>
+</li>
+<li><p>TCP/IP四层协议</p>
+<p>网络接口层、 网际层、运输层、 应用层。</p>
+</li>
+<li><p>TCP/IP五层协议</p>
+<p>物理层、数据链路层、网络层、运输层、 应用层。</p>
+</li>
+</ul>
+<h3 id="OSI七层模型"><a href="#OSI七层模型" class="headerlink" title="OSI七层模型"></a>OSI七层模型</h3><ul>
+<li><p>物理层</p>
+<p>物理层处于OSI的最底层，是整个开放系统的基础。物理层涉及通信信道上传输的原始比特流(bits)，它的功能主要是为数据端设备提供传送数据的通路以及传输数据</p>
+<p>简单的说，物理层确保原始的数据可在各种物理媒体上传输。物理层记住两个重要的设备名称，中继器（Repeater，也叫放大器）和集线器。</p>
+</li>
+<li><p>数据链路层</p>
+<p>数据链路层的主要任务是实现计算机网络中相邻节点之间的可靠传输，把原始的、有差错的物理传输线路加上数据链路协议以后，构成逻辑上可靠的数据链路。需要完成的功能有链路管理、成帧、差错控制以及流量控制等。其中成帧是对物理层的原始比特流进行界定，数据链路层也能够对帧的丢失进行处理。</p>
+<ul>
+<li><p>数据链路层为网络层提供可靠的数据传输</p>
+</li>
+<li><p>基本数据单位为帧；</p>
+</li>
+<li><p>主要的协议：以太网协议；</p>
+</li>
+<li><p>两个重要设备名称：网桥和交换机。</p>
+</li>
+</ul>
+</li>
+<li><p>网络层</p>
+<p>网络层涉及源主机节点到目的主机节点之间可靠的网络传输，它需要完成的功能主要包括路由选择、网络寻址、流量控制、拥塞控制、网络互连等。</p>
+<ul>
+<li><p>网络层负责对子网间的数据包进行路由选择。此外，网络层还可以实现拥塞控制、网际互连等功能</p>
+</li>
+<li><p>基本数据单位为IP数据报</p>
+</li>
+<li><p>包含的主要协议：</p>
+<ul>
+<li><p>IP协议（Internet Protocol，因特网互联协议）</p>
+</li>
+<li><p>ICMP协议（Internet Control Message Protocol，因特网控制报文协议）</p>
+</li>
+<li><p>ARP协议（Address Resolution Protocol，地址解析协议）</p>
+</li>
+<li><p>RARP协议（Reverse Address Resolution Protocol，逆地址解析协议）</p>
+</li>
+</ul>
+<ul>
+<li>重要的设备：路由器。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>传输层</p>
+</li>
+</ul>
+<blockquote>
+<p>传输层起着承上启下的作用，涉及源端节点到目的端节点之间可靠的信息传输。传输层需要解决跨越网络连接的建立和释放，对底层不可靠的网络，建立连接时需要三次握手，释放连接时需要四次挥手。</p>
+</blockquote>
+<ul>
+<li><p>传输层负责将上层数据分段并提供端到端的、可靠的或不可靠的传输以及端到端的差错控制和流量控制问题</p>
+</li>
+<li><p>包含的主要协议：</p>
+<p>TCP协议（Transmission Control Protocol，传输控制协议）</p>
+<p>UDP协议（User Datagram Protocol，用户数据报协议）</p>
+</li>
+<li><p>重要设备：网关</p>
+</li>
+</ul>
+<ul>
+<li><p>会话层、表示层、应用层</p>
+<p>会话层的主要功能是负责应用程序之间建立、维持和中断会话，同时也提供对设备和结点之间的会话控制，协调系统和服务之间的交流，并通过提供单工、半双工和全双工3种不同的通信方式，使系统和服务之间有序地进行通信。</p>
+<p>表示层关心所传输数据信息的格式定义，其主要功能是把应用层提供的信息变换为能够共同理解的形式，提供字符代码、数据格式、控制信息格式、加密等的统一表示。</p>
+<p>应用层为OSI的最高层，是直接为应用进程提供服务的。其作用是在实现多个系统应用进程相互通信的同时，完成一系列业务处理所需的服务。</p>
+</li>
+</ul>
+<ul>
+<li><p>数据传输基本单位为报文</p>
+</li>
+<li><p>包含的主要协议</p>
+<p> FTP（文件传送协议）、Telnet（远程登录协议）、DNS（域名解析协议）<br> SMTP（邮件传送协议），POP3协议（邮局协议），HTTP协议（Hyper Text Transfer Protocol）</p>
+</li>
+</ul>
+<h3 id="TCP-IP-模型"><a href="#TCP-IP-模型" class="headerlink" title="TCP/IP 模型"></a>TCP/IP 模型</h3><ul>
+<li><p>网络接口层</p>
+<p>TCP/IP协议对网络接口层没有给出具体的描述，网络接口层对应着物理层和数据链路层。</p>
+</li>
+<li><p>网际层</p>
+<p>互联网层是整个TCP/IP协议栈的核心。它的功能是把分组发往目标网络或主机。同时，为了尽快地发送分组，可能需要沿不同的路径同时进行分组传递。因此，分组到达的顺序和发送的顺序可能不同，这就需要上层必须对分组进行排序。互联网层除了需要完成路由的功能外，也可以完成将不同类型的网络（异构网）互连的任务。除此之外，互联网层还需要完成拥塞控制的功能</p>
+</li>
+<li><p>运输层</p>
+<p>TCP层负责在应用进程之间建立端到端的连接和可靠通信，它只存在与端节点中。TCP层涉及两个协议，TCP和UDP。其中，TCP协议提供面向连接的服务，提供按字节流的有序、可靠传输，可以实现连接管理、差错控制、流量控制、拥塞控制等。UDP协议提供无连接的服务，用于不需要或无法实现面向连接的网络应用中。</p>
+</li>
+<li><p>应用层</p>
+<p>应用层为Internet中的各种网络应用提供服务</p>
+</li>
+</ul>
+<h3 id="交换机"><a href="#交换机" class="headerlink" title="交换机"></a>交换机</h3><blockquote>
+<p>在计算机网络系统中，交换机是针对共享工作模式的弱点而推出的。交换机拥有一条高带宽的背部总线和内部交换矩阵。交换机的所有的端口都挂接在这条背 部总线上，当控制电路收到数据包以后，处理端口会查找内存中的地址对照表以确定目的MAC（网卡的硬件地址）的NIC（网卡）挂接在哪个端口上，通过内部 交换矩阵迅速将数据包传送到目的端口。目的MAC若不存在，交换机才广播到所有的端口，接收端口回应后交换机会“学习”新的地址，并把它添加入内部地址表 中。</p>
+</blockquote>
+<ul>
+<li><p>交换机工作于OSI参考模型的第二层，即数据链路层。交换机内部的CPU会在每个端口成功连接时，通过ARP协议学习它的MAC地址，保存成一张 ARP表。在今后的通讯中，发往该MAC地址的数据包将仅送往其对应的端口，而不是所有的端口。因此，交换机可用于划分数据链路层广播，即冲突域；但它不 能划分网络层广播，即广播域。</p>
+</li>
+<li><p>交换机被广泛应用于二层网络交换，俗称“二层交换机”。</p>
+</li>
+<li><p>交换机的种类有：二层交换机、三层交换机、四层交换机、七层交换机分别工作在OSI七层模型中的第二层、第三层、第四层盒第七层，并因此而得名。</p>
+</li>
+</ul>
+<h3 id="路由器"><a href="#路由器" class="headerlink" title="路由器"></a>路由器</h3><blockquote>
+<p>路由器（Router）是一种计算机网络设备，提供了路由与转送两种重要机制，可以决定数据包从来源端到目的端所经过 的路由路径（host到host之间的传输路径），这个过程称为路由；将路由器输入端的数据包移送至适当的路由器输出端(在路由器内部进行)，这称为转 送。路由工作在OSI模型的第三层——即网络层，例如网际协议。</p>
+</blockquote>
+<ul>
+<li>路由器的一个作用是连通不同的网络，另一个作用是选择信息传送的线路。 路由器与交换器的差别，路由器是属于OSI第三层的产品，交换器是OSI第二层的产品(这里特指二层交换机)。</li>
+</ul>
+<h3 id="网关"><a href="#网关" class="headerlink" title="网关"></a>网关</h3><blockquote>
+<p>网关（Gateway），网关顾名思义就是连接两个网络的设备，区别于路由器（由于历史的原因，许多有关TCP/IP 的文献曾经把网络层使用的路由器（Router）称为网关，在今天很多局域网采用都是路由来接入网络，因此现在通常指的网关就是路由器的IP），经常在家 庭中或者小型企业网络中使用，用于连接局域网和Internet。</p>
+</blockquote>
+<ul>
+<li><p>网关也经常指把一种协议转成另一种协议的设备，比如语音网关。</p>
+</li>
+<li><p>在传统TCP/IP术语中，网络设备只分成两种，一种为网关（gateway），另一种为主机（host）。网关能在网络间转递数据包，但主机不能 转送数据包。在主机（又称终端系统，end system）中，数据包需经过TCP/IP四层协议处理，但是在网关（又称中介系 统，intermediate system）只需要到达网际层（Internet layer），决定路径之后就可以转送。在当时，网关 （gateway）与路由器（router）还没有区别。</p>
+</li>
+<li><p>在现代网络术语中，网关（gateway）与路由器（router）的定义不同。网关（gateway）能在不同协议间移动数据，而路由器（router）是在不同网络间移动数据，相当于传统所说的IP网关（IP gateway）。</p>
+</li>
+<li><p>网关是连接两个网络的设备，对于语音网关来说，他可以连接PSTN网络和以太网，这就相当于VOIP，把不同电话中的模拟信号通过网关而转换成数字信号，而且加入协议再去传输。在到了接收端的时候再通过网关还原成模拟的电话信号，最后才能在电话机上听到。</p>
+</li>
+<li><p>对于以太网中的网关只能转发三层以上数据包，这一点和路由是一样的。而不同的是网关中并没有路由表，他只能按照预先设定的不同网段来进行转发。网关最重要的一点就是端口映射，子网内用户在外网看来只是外网的IP地址对应着不同的端口，这样看来就会保护子网内的用户。</p>
+</li>
+</ul>
+<h2 id="网络协议"><a href="#网络协议" class="headerlink" title="网络协议"></a>网络协议</h2><ul>
+<li><p>每一层的协议如下</p>
+<ul>
+<li><p>物理层：RJ45、CLOCK、IEEE802.3 （中继器，集线器）</p>
+</li>
+<li><p>数据链路：PPP、FR、HDLC、VLAN、MAC （网桥，交换机）</p>
+</li>
+<li><p>网络层：IP、ICMP、ARP、RARP、OSPF、IPX、RIP、IGRP、 （路由器）</p>
+</li>
+<li><p>传输层：TCP、UDP、SPX</p>
+</li>
+<li><p>会话层：NFS、SQL、NETBIOS、RPC</p>
+</li>
+<li><p>表示层：JPEG、MPEG、ASII</p>
+</li>
+<li><p>应用层：FTP、DNS、Telnet、SMTP、HTTP、WWW、NFS</p>
+</li>
+</ul>
+</li>
+<li><p>每一层的作用如下</p>
+<ul>
+<li>物理层：通过媒介传输比特,确定机械及电气规范（比特Bit）</li>
+<li>数据链路层：将比特组装成帧和点到点的传递（帧Frame）</li>
+<li>网络层：负责数据包从源到宿的传递和网际互连（包PackeT）</li>
+<li>传输层：提供端到端的可靠报文传递和错误恢复（段Segment）</li>
+<li>会话层：建立、管理和终止会话（会话协议数据单元SPDU）</li>
+<li>表示层：对数据进行翻译、加密和压缩（表示协议数据单元PPDU）</li>
+<li>应用层：允许访问OSI环境的手段（应用协议数据单元APDU）</li>
+</ul>
+</li>
+</ul>
+<h3 id="ICMP协议"><a href="#ICMP协议" class="headerlink" title="ICMP协议"></a>ICMP协议</h3><p>因特网控制报文协议。它是TCP/IP协议族的一个子协议，用于在IP主机、路由器之间传递控制消息。</p>
+<h3 id="TFTP协议"><a href="#TFTP协议" class="headerlink" title="TFTP协议"></a>TFTP协议</h3><p>是TCP/IP协议族中的一个用来在客户机与服务器之间进行简单文件传输的协议，提供不复杂、开销不大的文件传输服务。</p>
+<h3 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h3><p>超文本传输协议，是一个属于应用层的面向对象的协议，由于其简捷、快速的方式，适用于分布式超媒体信息系统。</p>
+<h3 id="DHCP协议"><a href="#DHCP协议" class="headerlink" title="DHCP协议"></a>DHCP协议</h3><p>动态主机配置协议，是一种让系统得以连接到网络上，并获取所需要的配置参数手段。</p>
+<h3 id="NAT协议"><a href="#NAT协议" class="headerlink" title="NAT协议"></a>NAT协议</h3><p>网络地址转换属接入广域网(WAN)技术，是一种将私有（保留）地址转化为合法IP地址的转换技术。</p>
+<h3 id="DHCP协议-1"><a href="#DHCP协议-1" class="headerlink" title="DHCP协议"></a>DHCP协议</h3><p>一个局域网的网络协议，使用UDP协议工作，用途：给内部网络或网络服务供应商自动分配IP地址，给用户或者内部网络管理员作为对所有计算机作中央管理的手段。</p>
+<h3 id="ARP-地址解析协议"><a href="#ARP-地址解析协议" class="headerlink" title="ARP(地址解析协议)"></a>ARP(地址解析协议)</h3><p>简单语言解释一下工作原理。</p>
+<p>1：首先，每个主机都会在自己的ARP缓冲区中建立一个ARP列表，以表示IP地址和MAC地址之间的对应关系。</p>
+<p>2：当源主机要发送数据时，首先检查ARP列表中是否有对应IP地址的目的主机的MAC地址如果有，则直接发送数据，如果没有，就向本网段的所有主机发送ARP数据包该数据包包括的内容有：源主机 IP地址，源主机MAC地址，目的主机的IP 地址。</p>
+<p>3：当本网络的所有主机收到该ARP数据包时，首先检查数据包中的IP地址是否是自己的IP地址，如果不是，则忽略该数据包，如果是，则首先从数据包中取出源主机的IP和MAC地址写入到ARP列表中，如果已经存在，则覆盖，然后将自己的MAC地址写入ARP响应包中，告诉源主机自己是它想要找的MAC地址。</p>
+<p>4：源主机收到ARP响应包后。将目的主机的IP和MAC地址写入ARP列表，并利用此信息发送数据。如果源主机一直没有收到ARP响应数据包，表示ARP查询失败。广播发送ARP请求，单播发送ARP响应。</p>
+<h3 id="RARP协议"><a href="#RARP协议" class="headerlink" title="RARP协议"></a>RARP协议</h3><p>RARP是逆地址解析协议，作用是完成硬件地址到IP地址的映射，主要用于无盘工作站，因为给无盘工作站配置的IP地址不能保存。</p>
+<p>工作流程：在网络中配置一台RARP服务器，里面保存着IP地址和MAC地址的映射关系，当无盘工作站启动后，就封装一个RARP数据包，里面有其MAC地址，然后广播到网络上去，当服务器收到请求包后，就查找对应的MAC地址的IP地址装入响应报文中发回给请求者。因为需要广播请求报文，因此RARP只能用于具有广播能力的网络。</p>
+<h3 id="TCP-IP协议"><a href="#TCP-IP协议" class="headerlink" title="TCP/IP协议"></a>TCP/IP协议</h3><p>TCP/IP协议是Internet最基本的协议、Internet国际互联网络的基础，由网络层的IP协议和传输层的TCP协议组成。通俗而言：TCP负责发现传输的问题，一有问题就发出信号，要求重新传输，直到所有数据安全正确地传输到目的地。而IP是给因特网的每一台联网设备规定一个地址。</p>
+<p>IP层接收由更低层（网络接口层例如以太网设备驱动程序）发来的数据包，并把该数据包发送到更高层—TCP或UDP层；相反，IP层也把从TCP或UDP层接收来的数据包传送到更低层。IP数据包是不可靠的，因为IP并没有做任何事情来确认数据包是否按顺序发送的或者有没有被破坏，IP数据包中含有发送它的主机的地址（源地址）和接收它的主机的地址（目的地址）。</p>
+<p>TCP是面向连接的通信协议，通过三次握手建立连接，通讯完成时要拆除连接，由于TCP是面向连接的所以只能用于端到端的通讯。TCP提供的是一种可靠的数据流服务，采用“带重传的肯定确认”技术来实现传输的可靠性。TCP还采用一种称为“滑动窗口”的方式进行流量控制，所谓窗口实际表示接收能力，用以限制发送方的发送速度。</p>
+<h2 id="TCP对应的协议和UDP对应的协议"><a href="#TCP对应的协议和UDP对应的协议" class="headerlink" title="TCP对应的协议和UDP对应的协议"></a>TCP对应的协议和UDP对应的协议</h2><h3 id="TCP对应的协议："><a href="#TCP对应的协议：" class="headerlink" title="TCP对应的协议："></a>TCP对应的协议：</h3><ul>
+<li><p>FTP：定义了文件传输协议，使用21端口。</p>
+</li>
+<li><p>Telnet：一种用于远程登陆的端口，使用23端口，用户可以以自己的身份远程连接到计算机上，可提供基于DOS模式下的通信服务。</p>
+</li>
+<li><p>SMTP：邮件传送协议，用于发送邮件。服务器开放的是25号端口。</p>
+</li>
+<li><p>POP3：它是和SMTP对应，POP3用于接收邮件。POP3协议所用的是110端口。</p>
+</li>
+<li><p>HTTP：是从Web服务器传输超文本到本地浏览器的传送协议。</p>
+</li>
+</ul>
+<h3 id="UDP对应的协议："><a href="#UDP对应的协议：" class="headerlink" title="UDP对应的协议："></a>UDP对应的协议：</h3><ul>
+<li><p>DNS：用于域名解析服务，将域名地址转换为IP地址。DNS用的是53号端口。</p>
+</li>
+<li><p>TFTP(Trival File Tran敏感词er Protocal)，简单文件传输协议，该协议在熟知端口69上使用UDP服务。</p>
+</li>
+</ul>
+<h3 id="TCP和UDP的区别"><a href="#TCP和UDP的区别" class="headerlink" title="TCP和UDP的区别"></a>TCP和UDP的区别</h3><ul>
+<li><p>TCP提供面向连接的、可靠的数据流传输，而UDP提供的是非面向连接的、不可靠的数据流传输。</p>
+</li>
+<li><p>TCP传输单位称为TCP报文段，UDP传输单位称为用户数据报。</p>
+</li>
+<li><p>TCP注重数据安全性，UDP数据传输快，因为不需要连接等待，少了许多操作，但是其安全性却一般</p>
+</li>
+</ul>
+<h2 id="TCP三次握手和四次挥手的全过程"><a href="#TCP三次握手和四次挥手的全过程" class="headerlink" title="TCP三次握手和四次挥手的全过程"></a>TCP三次握手和四次挥手的全过程</h2><h3 id="三次握手："><a href="#三次握手：" class="headerlink" title="三次握手："></a>三次握手：</h3><ul>
+<li><p>第一次握手：客户端发送syn包(syn=x)到服务器，并进入SYN_SEND状态，等待服务器确认；</p>
+</li>
+<li><p>第二次握手：服务器收到syn包，必须确认客户的SYN（ack=x+1），同时自己也发送一个SYN包（syn=y），即SYN+ACK包，此时服务器进入SYN_RECV状态；</p>
+</li>
+<li><p>第三次握手：客户端收到服务器的SYN＋ACK包，向服务器发送确认包ACK(ack=y+1)，此包发送完毕，客户端和服务器进入ESTABLISHED状态，完成三次握手。</p>
+<p>握手过程中传送的包里不包含数据，三次握手完毕后，客户端与服务器才正式开始传送数据。理想状态下，TCP连接一旦建立，在通信双方中的任何一方主动关闭连接之前，TCP 连接都将被一直保持下去。</p>
+</li>
+</ul>
+<h3 id="四次挥手："><a href="#四次挥手：" class="headerlink" title="四次挥手："></a>四次挥手：</h3><blockquote>
+<p>与建立连接的“三次握手”类似，断开一个TCP连接则需要“四次握手”。</p>
+</blockquote>
+<ul>
+<li><p>第一次挥手：主动关闭方发送一个FIN，用来关闭主动方到被动关闭方的数据传送，也就是主动关闭方告诉被动关闭方：我已经不 会再给你发数据了(当然，在fin包之前发送出去的数据，如果没有收到对应的ack确认报文，主动关闭方依然会重发这些数据)，但是，此时主动关闭方还可 以接受数据。</p>
+</li>
+<li><p>第二次挥手：被动关闭方收到FIN包后，发送一个ACK给对方，确认序号为收到序号+1（与SYN相同，一个FIN占用一个序号）。</p>
+</li>
+<li><p>第三次挥手：被动关闭方发送一个FIN，用来关闭被动关闭方到主动关闭方的数据传送，也就是告诉主动关闭方，我的数据也发送完了，不会再给你发数据了。</p>
+</li>
+<li><p>第四次挥手：主动关闭方收到FIN后，发送一个ACK给被动关闭方，确认序号为收到序号+1，至此，完成四次挥手。</p>
+</li>
+</ul>
+<h2 id="DNS域名系统工作原理。"><a href="#DNS域名系统工作原理。" class="headerlink" title="DNS域名系统工作原理。"></a>DNS域名系统工作原理。</h2><p>当DNS客户机需要在程序中使用名称时，它会查询DNS服务器来解析该名称。客户机发送的每条查询信息包括三条信息：包括：指定的DNS域名，指定的查询类型，DNS域名的指定类别。基于UDP服务，端口53. 该应用一般不直接为用户使用，而是为其他应用服务，如HTTP，SMTP等在其中需要完成主机名到IP地址的转换。</p>
+<h3 id="在浏览器中输入www-baidu-com后执行的全部过程"><a href="#在浏览器中输入www-baidu-com后执行的全部过程" class="headerlink" title="在浏览器中输入www.baidu.com后执行的全部过程"></a>在浏览器中输入<a href="http://www.baidu.com后执行的全部过程" target="_blank" rel="noopener">www.baidu.com后执行的全部过程</a></h3><ol>
+<li><p>客户端浏览器通过DNS解析到<a href="http://www.baidu.com的IP地址220.181.27.48，通过这个IP地址找到客户端到服务器的路径。客户端浏览器发起一个HTTP会话到220.161.27.48，然后通过TCP进行封装数据包，输入到网络层。" target="_blank" rel="noopener">www.baidu.com的IP地址220.181.27.48，通过这个IP地址找到客户端到服务器的路径。客户端浏览器发起一个HTTP会话到220.161.27.48，然后通过TCP进行封装数据包，输入到网络层。</a></p>
+</li>
+<li><p>在客户端的传输层，把HTTP会话请求分成报文段，添加源和目的端口，如服务器使用80端口监听客户端的请求，客户端由系统随机选择一个端口如5000，与服务器进行交换，服务器把相应的请求返回给客户端的5000端口。然后使用IP层的IP地址查找目的端。</p>
+</li>
+<li><p>客户端的网络层不用关心应用层或者传输层的东西，主要做的是通过查找路由表确定如何到达服务器，期间可能经过多个路由器，这些都是由路由器来完成的工作，我不作过多的描述，无非就是通过查找路由表决定通过那个路径到达服务器。</p>
+</li>
+<li><p>客户端的链路层，包通过链路层发送到路由器，通过邻居协议查找给定IP地址的MAC地址，然后发送ARP请求查找目的地址，如果得到回应后就可以使用ARP的请求应答交换的IP数据包现在就可以传输了，然后发送IP数据包到达服务器的地址。</p>
+</li>
+</ol>
+<h2 id="HTTPS和HTTP的区别"><a href="#HTTPS和HTTP的区别" class="headerlink" title="HTTPS和HTTP的区别"></a>HTTPS和HTTP的区别</h2><blockquote>
+<p>HTTPS（全称：Hyper Text Transfer Protocol over Secure Socket Layer），是以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。它是一个URI scheme（抽象标识符体系），句法类同http:体系。用于安全的HTTP数据传输。</p>
+</blockquote>
+<blockquote>
+<p>https:URL表明它使用了HTTP，但HTTPS存在不同于HTTP的默认端口及一个加密/身份验证层（在HTTP与TCP之间）。</p>
+</blockquote>
+<p>超文本传输协议HTTP协议被用于在Web浏览器和网站服务器之间传递信息。HTTP协议以明文方式发送内容，不提供任何方式的数据加密，如果攻击者截取了Web浏览器和网站服务器之间的传输报文，就可以直接读懂其中的信息，因此HTTP协议不适合传输一些敏感信息，比如信用卡号、密码等。</p>
+<p>为了解决HTTP协议的这一缺陷，需要使用另一种协议：安全套接字层超文本传输协议HTTPS。为了数据传输的安全，HTTPS在HTTP的基础上加入了SSL协议，SSL依靠证书来验证服务器的身份，并为浏览器和服务器之间的通信加密。</p>
+<h3 id="HTTPS和HTTP的区别主要为以下四点："><a href="#HTTPS和HTTP的区别主要为以下四点：" class="headerlink" title="HTTPS和HTTP的区别主要为以下四点："></a>HTTPS和HTTP的区别主要为以下四点：</h3><ol>
+<li><p>https协议需要到ca申请证书，一般免费证书很少，需要交费。</p>
+</li>
+<li><p>http是超文本传输协议，信息是明文传输，https 则是具有安全性的ssl加密传输协议。</p>
+</li>
+<li><p>http和https使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。</p>
+</li>
+<li><p>http的连接很简单，是无状态的；HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比http协议安全。</p>
+</li>
+</ol>
+<h2 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h2><ul>
+<li><p>网络地址</p>
+<p>IP地址由网络号（包括子网号）和主机号组成，网络地址的主机号为全0，网络地址代表着整个网络。</p>
+</li>
+<li><p>广播地址</p>
+<p>广播地址通常称为直接广播地址，是为了区分受限广播地址。广播地址与网络地址的主机号正好相反，广播地址中，主机号为全1。当向某个网络的广播地址发送消息时，该网络内的所有主机都能收到该广播消息。</p>
+</li>
+<li><p>组播地址</p>
+<p>D类地址就是组播地址。</p>
+</li>
+<li><p>A，B，C，D类地址</p>
+<p>A类地址以0开头，第一个字节作为网络号，地址范围为：0.0.0.0~127.255.255.255;</p>
+<p>B类地址以10开头，前两个字节作为网络号，地址范围是：128.0.0.0~191.255.255.255;</p>
+<p>C类地址以110开头，前三个字节作为网络号，地址范围是：192.0.0.0~223.255.255.255。</p>
+<p>D类地址以1110开头，地址范围是224.0.0.0~239.255.255.255，D类地址作为组播地址（一对多的通信）；</p>
+<p>E类地址以1111开头，地址范围是240.0.0.0~255.255.255.255，E类地址为保留地址，供以后使用。</p>
+<p>注：只有A,B,C有网络号和主机号之分，D类地址和E类地址没有划分网络号和主机号。</p>
+</li>
+<li><p>255.255.255.255</p>
+<p>该IP地址指的是受限的广播地址。受限广播地址与一般广播地址（直接广播地址）的区别在于，受限广播地址只能用于本地网络，路由器不会转发以受限广播地址为目的地址的分组；一般广播地址既可在本地广播，也可跨网段广播。例如：主机192.168.1.1/30上的直接广播数据包后，另外一个网段192.168.1.5/30也能收到该数据报；若发送受限广播数据报，则不能收到。</p>
+<p>注：一般的广播地址（直接广播地址）能够通过某些路由器（当然不是所有的路由器），而受限的广播地址不能通过路由器。</p>
+</li>
+<li><p>0.0.0.0</p>
+<p>常用于寻找自己的IP地址，例如在我们的RARP，BOOTP和DHCP协议中，若某个未知IP地址的无盘机想要知道自己的IP地址，它就以255.255.255.255为目的地址，向本地范围（具体而言是被各个路由器屏蔽的范围内）的服务器发送IP请求分组。</p>
+</li>
+<li><p>回环地址</p>
+<p>127.0.0.0/8被用作回环地址，回环地址表示本机的地址，常用于对本机的测试，用的最多的是127.0.0.1。</p>
+</li>
+<li><p>A、B、C类私有地址</p>
+<p>私有地址(private address)也叫专用地址，它们不会在全球使用，只具有本地意义。</p>
+<p>A类私有地址：10.0.0.0/8，范围是：10.0.0.0~10.255.255.255</p>
+<p>B类私有地址：172.16.0.0/12，范围是：172.16.0.0~172.31.255.255</p>
+<p>C类私有地址：192.168.0.0/16，范围是：192.168.0.0~192.168.255.255</p>
+</li>
+<li><p>子网掩码</p>
+<p>子网掩码是标志两个IP地址是否同属于一个子网的，也是32位二进制地址，其每一个为1代表该位是网络位，为0代表主机位。它和IP地址一样也是使用点式十进制来表示的。如果两个IP地址在子网掩码的按位与的计算下所得结果相同，即表明它们共属于同一子网中。</p>
+<p>在计算子网掩码时，我们要注意IP地址中的保留地址，即“ 0”地址和广播地址，它们是指主机地址或网络地址全为“ 0”或“ 1”时的IP地址，它们代表着本网络地址和广播地址，一般是不能被计算在内的。</p>
+</li>
+</ul>
+<h2 id="IPv4与IPv6"><a href="#IPv4与IPv6" class="headerlink" title="IPv4与IPv6"></a>IPv4与IPv6</h2><blockquote>
+<p>目前的全球因特网所采用的协议族是TCP/IP协议族。IP是TCP/IP协议族中网络层的协议，是TCP/IP协议族的核心协议。目前IP协议的版本号是4(简称为IPv4)，发展至今已经使用了30多年。<br>IPv4的地址位数为32位，也就是最多有2的32次方的电脑可以联到Internet上。</p>
+</blockquote>
+<h3 id="什么是IPv6"><a href="#什么是IPv6" class="headerlink" title="什么是IPv6"></a>什么是IPv6</h3><p>IPv6是下一版本的互联网协议，也可以说是下一代互联网的协议，它的提出最初是因为随着互联网的迅速发展，IPv4定义的有限地址空间将被耗尽，地址空间的不足必将妨碍互联网的进一步发展。为了扩大地址空间，拟通过IPv6重新定义地址空间。IPv6采用128位地址长度，几乎可以不受限制地提供地址。按保守方法估算IPv6实际可分配的地址，整个地球的每平方米面积上仍可分配1000多个地址。在IPv6的设计过程中除了一劳永逸地解决了地址短缺问题以外，还考虑了在IPv4中解决不好的其它问题，主要有端到端IP连接、服务质量（QoS）、安全性、多播、移动性、即插即用等。</p>
+<h3 id="IPv6与IPv4相比有什么特点和优点"><a href="#IPv6与IPv4相比有什么特点和优点" class="headerlink" title="IPv6与IPv4相比有什么特点和优点"></a>IPv6与IPv4相比有什么特点和优点</h3><ul>
+<li><p>更大的地址空间。IPv4中规定IP地址长度为32，即有2^32-1个地址；而IPv6中IP地址的长度为128，即有2^128-1个地址。</p>
+</li>
+<li><p>更小的路由表。IPv6的地址分配一开始就遵循聚类(Aggregation)的原则，这使得路由器能在路由表中用一条记录(Entry)表示一片子网，大大减小了路由器中路由表的长度，提高了路由器转发数据包的速度。</p>
+</li>
+<li><p>增强的组播(Multicast)支持以及对流的支持(Flow-control)。这使得网络上的多媒体应用有了长足发展的机会，为服务质量(QoS)控制提供了良好的网络平台.</p>
+</li>
+<li><p>加入了对自动配置(Auto-configuration)的支持。这是对DHCP协议的改进和扩展，使得网络(尤其是局域网)的管理更加方便和快捷</p>
+</li>
+<li><p>更高的安全性.在使用IPv6网络中用户可以对网络层的数据进行加密并对IP报文进行校验,这极大的增强了网络安全</p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/网络/" rel="tag"># 网络</a>
+          
+        </div>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2017/11/10/20171111005/" rel="next" title="常用linux命令汇总">
+                <i class="fa fa-chevron-left"></i> 常用linux命令汇总
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+              <a href="/2017/11/11/2017111102/" rel="prev" title="常用语言辨识">
+                常用语言辨识 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+         
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.gif"
+      alt="Jack Wang">
+  <p class="site-author-name" itemprop="name">Jack Wang</p>
+  <div class="site-description motion-element" itemprop="description">个人知识总结</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/jackwangc" title="GitHub &rarr; https://github.com/jackwangc" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:wang.jie.jack6@gmail.com" title="E-Mail &rarr; mailto:wang.jie.jack6@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+  <div class="links-of-blogroll motion-element links-of-blogroll-block">
+    <div class="links-of-blogroll-title">
+      <i class="fa  fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://jackwangc.github.io/Docsify/#/" title="https://jackwangc.github.io/Docsify/#/" rel="noopener" target="_blank">Java 面试总结</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+          <div id = "music">
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 
+            src="//music.163.com/outchain/player?type=2&id=450795499&auto=1&height=66"></iframe>
+          </div>
+          
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#计算机网络概述"><span class="nav-number">1.</span> <span class="nav-text">计算机网络概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#学习计算机网络就是学习计算机网络模型中的网络协议"><span class="nav-number">1.1.</span> <span class="nav-text">学习计算机网络就是学习计算机网络模型中的网络协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络模型"><span class="nav-number">1.2.</span> <span class="nav-text">网络模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#OSI七层模型"><span class="nav-number">1.2.1.</span> <span class="nav-text">OSI七层模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-IP-模型"><span class="nav-number">1.2.2.</span> <span class="nav-text">TCP/IP 模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交换机"><span class="nav-number">1.2.3.</span> <span class="nav-text">交换机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由器"><span class="nav-number">1.2.4.</span> <span class="nav-text">路由器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网关"><span class="nav-number">1.2.5.</span> <span class="nav-text">网关</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络协议"><span class="nav-number">1.3.</span> <span class="nav-text">网络协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ICMP协议"><span class="nav-number">1.3.1.</span> <span class="nav-text">ICMP协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TFTP协议"><span class="nav-number">1.3.2.</span> <span class="nav-text">TFTP协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP协议"><span class="nav-number">1.3.3.</span> <span class="nav-text">HTTP协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DHCP协议"><span class="nav-number">1.3.4.</span> <span class="nav-text">DHCP协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NAT协议"><span class="nav-number">1.3.5.</span> <span class="nav-text">NAT协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DHCP协议-1"><span class="nav-number">1.3.6.</span> <span class="nav-text">DHCP协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ARP-地址解析协议"><span class="nav-number">1.3.7.</span> <span class="nav-text">ARP(地址解析协议)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RARP协议"><span class="nav-number">1.3.8.</span> <span class="nav-text">RARP协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-IP协议"><span class="nav-number">1.3.9.</span> <span class="nav-text">TCP/IP协议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP对应的协议和UDP对应的协议"><span class="nav-number">1.4.</span> <span class="nav-text">TCP对应的协议和UDP对应的协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP对应的协议："><span class="nav-number">1.4.1.</span> <span class="nav-text">TCP对应的协议：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UDP对应的协议："><span class="nav-number">1.4.2.</span> <span class="nav-text">UDP对应的协议：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP和UDP的区别"><span class="nav-number">1.4.3.</span> <span class="nav-text">TCP和UDP的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP三次握手和四次挥手的全过程"><span class="nav-number">1.5.</span> <span class="nav-text">TCP三次握手和四次挥手的全过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三次握手："><span class="nav-number">1.5.1.</span> <span class="nav-text">三次握手：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四次挥手："><span class="nav-number">1.5.2.</span> <span class="nav-text">四次挥手：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS域名系统工作原理。"><span class="nav-number">1.6.</span> <span class="nav-text">DNS域名系统工作原理。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在浏览器中输入www-baidu-com后执行的全部过程"><span class="nav-number">1.6.1.</span> <span class="nav-text">在浏览器中输入www.baidu.com后执行的全部过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS和HTTP的区别"><span class="nav-number">1.7.</span> <span class="nav-text">HTTPS和HTTP的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTPS和HTTP的区别主要为以下四点："><span class="nav-number">1.7.1.</span> <span class="nav-text">HTTPS和HTTP的区别主要为以下四点：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP地址"><span class="nav-number">1.8.</span> <span class="nav-text">IP地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IPv4与IPv6"><span class="nav-number">1.9.</span> <span class="nav-text">IPv4与IPv6</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是IPv6"><span class="nav-number">1.9.1.</span> <span class="nav-text">什么是IPv6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IPv6与IPv4相比有什么特点和优点"><span class="nav-number">1.9.2.</span> <span class="nav-text">IPv6与IPv4相比有什么特点和优点</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jack Wang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.3.0</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+
+  </div>
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  <script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+  
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.3.0"></script>
+
+  
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
