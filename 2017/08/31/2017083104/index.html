@@ -425,7 +425,7 @@
 </tr>
 </tbody></table>
 <h3 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h3><p>常量使用关键字 const 声明，变量可以使用关键字 var 声明，也可以通过使用快捷变量声明语法 := 。Go语言可以自动推断出所声明变量的类型。对于没有显式初始化的变量，Go 语言总是将零值赋值给该变量。<br>当需要设置多个常量的时候，不必重复使用 const 关键字，可以使用以下语法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const (</span><br><span class="line">    Cyan = 0</span><br><span class="line">    Black = 1</span><br><span class="line">    White = 2</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const <span class="params">(</span></span><br><span class="line"><span class="params">    <span class="attr">Cyan</span> = 0</span></span><br><span class="line"><span class="params">    <span class="attr">Black</span> = 1</span></span><br><span class="line"><span class="params">    <span class="attr">White</span> = 2</span></span><br><span class="line"><span class="params">)</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p>Go语言中字符串的可以使用双引号( “ )或者反引号( ` )来创建。双引号用来创建可解析的字符串字面量，所谓可解析的是指字符串中的一些符号可以被格式化为其他内容，如”\n”在在输出时候会被格式化成换行符， 如果需要按照原始字符输出必须进行转义。而反引号创建的字符串原始是什么样，那输出还是什么，不需要进行任何转义。</p>
 <h3 id="常用转义字符"><a href="#常用转义字符" class="headerlink" title="常用转义字符"></a>常用转义字符</h3><table>
@@ -456,7 +456,7 @@
 <td>4个16进制数字给定的Unicode字符</td>
 </tr>
 </tbody></table>
-<h3 id="数组切片"><a href="#数组切片" class="headerlink" title="数组切片"></a>数组切片</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 先定义数组</span><br><span class="line">Var myArray [10]int = [10]&#123;1,2,3,4,5&#125;</span><br><span class="line">Var mySlice []int = myArray[:5]5个元素</span><br><span class="line">Var mySlice []int = myArray[:]所有元素</span><br><span class="line">Var mySlice []int = myArray[5:]5个以后的</span><br></pre></td></tr></table></figure>
+<h3 id="数组切片"><a href="#数组切片" class="headerlink" title="数组切片"></a>数组切片</h3><figure class="highlight zephir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先定义数组</span></span><br><span class="line"><span class="keyword">Var</span> myArray [<span class="number">10</span>]<span class="keyword">int</span> = [<span class="number">10</span>]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line"><span class="keyword">Var</span> mySlice []<span class="keyword">int</span> = myArray[:<span class="number">5</span>]<span class="number">5</span>个元素</span><br><span class="line"><span class="keyword">Var</span> mySlice []<span class="keyword">int</span> = myArray[:]所有元素</span><br><span class="line"><span class="keyword">Var</span> mySlice []<span class="keyword">int</span> = myArray[<span class="number">5</span>:]<span class="number">5</span>个以后的</span><br></pre></td></tr></table></figure>
 
 <h3 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h3><p>异常 defer panic recover</p>
 <p>Defer 简单处理 <code>defer srcFile.Close()</code></p>
@@ -485,22 +485,22 @@
 <p>是不是很形象</p>
 <p>3 从channel中输出数据</p>
 <p><code>&lt;- c</code><br>channel分为两种：一种是有buffer的，一种是没有buffer的，默认是没有buffer的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ci := make(chan int) //无buffer</span><br><span class="line"></span><br><span class="line">cj := make(chan int, 0) //无buffer</span><br><span class="line"></span><br><span class="line">cs := make(chan int, 100) //有buffer</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ci := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>) <span class="comment">//无buffer</span></span><br><span class="line"></span><br><span class="line">cj := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>, <span class="number">0</span>) <span class="comment">//无buffer</span></span><br><span class="line"></span><br><span class="line">cs := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>, <span class="number">100</span>) <span class="comment">//有buffer</span></span><br></pre></td></tr></table></figure>
 
 <p>有缓冲的channel，因此要注意“放”先于“取”</p>
 <p>无缓冲的channel，因此要注意“取”先于“放”</p>
 <p>匿名函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">go f(&quot;goroutine&quot;)</span><br><span class="line"></span><br><span class="line">go func(msg string) &#123;</span><br><span class="line">        fmt.Println(msg)</span><br><span class="line">&#125;(&quot;going&quot;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">go</span> f(<span class="string">"goroutine"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(msg <span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">        fmt.Println(msg)</span><br><span class="line">&#125;(<span class="string">"going"</span>)</span><br></pre></td></tr></table></figure>
 
 <p>goroutine使用以下的go语句进行创建:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">go function(arguments)</span><br><span class="line">go func(parameters) &#123; block &#125; (arguments)</span><br><span class="line">goroutine之间需要相互协作，最好的方式是通过channel来交换数据。</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">go</span> function(arguments)</span><br><span class="line"><span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(parameters)</span></span> &#123; block &#125; (arguments)</span><br><span class="line">goroutine之间需要相互协作，最好的方式是通过channel来交换数据。</span><br></pre></td></tr></table></figure>
 
 <p>在Go中函数也是一种变量，我们可以通过type来定义它</p>
 <p>cookie 是存储于访问者的计算机中的变量。每当同一台计算机通过浏览器请求某个页面时，就会发送这个 cookie。你可以使用 JavaScript 来创建和取回 cookie 的值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Mutex.Lock()(sync.mutex)同步锁（只允许一个线程运行）</span><br><span class="line">Mutex.Runlock()(sync.rwmutex)（单写多读模型）</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">Mutex</span><span class="selector-class">.Lock</span>()(<span class="selector-tag">sync</span><span class="selector-class">.mutex</span>)同步锁（只允许一个线程运行）</span><br><span class="line"><span class="selector-tag">Mutex</span><span class="selector-class">.Runlock</span>()(<span class="selector-tag">sync</span><span class="selector-class">.rwmutex</span>)（单写多读模型）</span><br></pre></td></tr></table></figure>
 
 <p>Json 处理</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">解析JSON  json.Unmarshal([]byte(str), &amp;s)</span><br><span class="line">生成json   b, err := json.Marshal(s)</span><br></pre></td></tr></table></figure>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">解析<span class="keyword">JSON </span> <span class="keyword">json.Unmarshal([]byte(str), </span>&amp;s)</span><br><span class="line">生成<span class="keyword">json </span>  <span class="keyword">b, </span>err := <span class="keyword">json.Marshal(s)</span></span><br></pre></td></tr></table></figure>
 
 
     </div>
@@ -615,8 +615,6 @@
           
         
         
-        
-          
         
           
         

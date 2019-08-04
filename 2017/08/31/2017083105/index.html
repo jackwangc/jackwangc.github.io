@@ -303,15 +303,15 @@
 <li>文件中第一行的前两个字符 #! 称为 Shebang ，目的是告诉 shell 使用 Python 解释器执行其下面的代码。</li>
 <li>./filename.py 执行方法 为文件添加可执行权限</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x filename</span><br></pre></td></tr></table></figure>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +<span class="keyword">x</span> filename</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>python 中不需要为变量指定数据类型，直接给变量赋值即可。</li>
 <li>导入模块</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import math</span><br></pre></td></tr></table></figure>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br></pre></td></tr></table></figure>
 
-<h2 id="变量和数据类型"><a href="#变量和数据类型" class="headerlink" title="变量和数据类型"></a>变量和数据类型</h2><h3 id="python-关键字"><a href="#python-关键字" class="headerlink" title="python 关键字"></a>python 关键字</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">False               def                 if                  raise</span><br><span class="line">None                del                 import              return</span><br><span class="line">True                elif                in                  try</span><br><span class="line">and                 else                is                  while</span><br><span class="line">as                  except              lambda              with</span><br><span class="line">assert              finally             nonlocal            yield</span><br><span class="line">break               for                 not                 </span><br><span class="line">class               from                or                  </span><br><span class="line">continue            global              pass</span><br></pre></td></tr></table></figure>
+<h2 id="变量和数据类型"><a href="#变量和数据类型" class="headerlink" title="变量和数据类型"></a>变量和数据类型</h2><h3 id="python-关键字"><a href="#python-关键字" class="headerlink" title="python 关键字"></a>python 关键字</h3><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">False</span>               def                 <span class="keyword">if</span>                  <span class="keyword">raise</span></span><br><span class="line">None                del                 import              return</span><br><span class="line"><span class="keyword">True</span>                elif                <span class="keyword">in</span>                  <span class="keyword">try</span></span><br><span class="line"><span class="keyword">and</span>                 <span class="keyword">else</span>                <span class="keyword">is</span>                  <span class="keyword">while</span></span><br><span class="line"><span class="keyword">as</span>                  <span class="keyword">except</span>              lambda              <span class="keyword">with</span></span><br><span class="line">assert              <span class="keyword">finally</span>             nonlocal            <span class="keyword">yield</span></span><br><span class="line"><span class="keyword">break</span>               <span class="keyword">for</span>                 <span class="keyword">not</span>                 </span><br><span class="line"><span class="keyword">class</span>               <span class="keyword">from</span>                <span class="keyword">or</span>                  </span><br><span class="line"><span class="keyword">continue</span>            <span class="keyword">global</span>              pass</span><br></pre></td></tr></table></figure>
 
 <h3 id="python-运算符"><a href="#python-运算符" class="headerlink" title="python 运算符"></a>python 运算符</h3><table>
 <thead>
@@ -367,23 +367,23 @@
 <td></td>
 </tr>
 </tbody></table>
-<h3 id="python-输出函数"><a href="#python-输出函数" class="headerlink" title="python 输出函数"></a>python 输出函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(&quot;Year &#123;&#125; Rs. &#123;:.2f&#125;&quot;.format(year, value))</span><br></pre></td></tr></table></figure>
+<h3 id="python-输出函数"><a href="#python-输出函数" class="headerlink" title="python 输出函数"></a>python 输出函数</h3><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span>(<span class="string">"Year &#123;&#125; Rs. &#123;:.2f&#125;"</span>.<span class="keyword">format</span>(year, value))</span><br></pre></td></tr></table></figure>
 
 <p> 称为字符串格式化，大括号和其中的字符会被替换成传入 str.format() 的参数,即 year 和 value。</p>
 <p> {:7.2f} 的意思是替换为 总长为7,2 位精度的浮点数;{:5d} 的意思是替换为 5个字符宽度的整数，宽度不足则使用空格填充。</p>
 <h2 id="控制循环"><a href="#控制循环" class="headerlink" title="控制循环"></a>控制循环</h2><h3 id="if-else"><a href="#if-else" class="headerlink" title="if else"></a>if else</h3><p>第二行务必缩进 (四个空格)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if expression:</span><br><span class="line">    do this</span><br><span class="line">elif expression1:</span><br><span class="line">    do this</span><br><span class="line">else:</span><br><span class="line">    do this</span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> expression:</span><br><span class="line">    <span class="keyword">do</span> <span class="keyword">this</span></span><br><span class="line">elif expression1:</span><br><span class="line">    <span class="keyword">do</span> <span class="keyword">this</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">do</span> <span class="keyword">this</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="真值检测"><a href="#真值检测" class="headerlink" title="真值检测"></a>真值检测</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if x:</span><br><span class="line">    do this</span><br></pre></td></tr></table></figure>
+<h3 id="真值检测"><a href="#真值检测" class="headerlink" title="真值检测"></a>真值检测</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> x:</span><br><span class="line">    <span class="keyword">do</span> <span class="keyword">this</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h3><p>while循环</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">while condition:</span><br><span class="line">    statement1</span><br><span class="line">    statement2</span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="string">condition:</span></span><br><span class="line">    statement1</span><br><span class="line">    statement2</span><br></pre></td></tr></table></figure>
 
 <h3 id="for-循环"><a href="#for-循环" class="headerlink" title="for 循环"></a>for 循环</h3><p>python for 循环可以遍历任何序列中的每一个元素</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span><br><span class="line">for x in a[::2]:</span><br><span class="line">    print(x)</span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>]</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="selector-tag">a</span>[::<span class="number">2</span>]:</span><br><span class="line">    print(x)</span><br></pre></td></tr></table></figure>
 
 <p>遍历数值序列</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for i in range(0,5):</span><br><span class="line">    print(i)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;bye&quot;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(0,5):</span><br><span class="line">    <span class="builtin-name">print</span>(i)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="builtin-name">print</span>(<span class="string">"bye"</span>)</span><br></pre></td></tr></table></figure>
 
 <p>循环后面的 else 语句会在循环结束后执行； continue 跳出本次循环 ；break 跳出整个循环；Python pass是空语句，是为了保持程序结构的完整性。pass 不做任何事情，一般用做占位语句。</p>
 <h2 id="序列-数组"><a href="#序列-数组" class="headerlink" title="序列(数组)"></a>序列(数组)</h2><h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>列表是最常用的Python数据类型，它可以作为一个方括号内的逗号分隔值出现。<br>列表的数据项不需要具有相同的类型<br>创建一个列表，只要把逗号分隔的不同的数据项使用方括号括起来即可。</p>
@@ -459,12 +459,12 @@
 <li>对切片进行赋值操作也会影响原列表。</li>
 <li>遍历列表（或任何序列类型）的同时获得元素索引值，你可以使用 enumerate()</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; for i, j in enumerate([&apos;a&apos;, &apos;b&apos;, &apos;c&apos;]):</span><br><span class="line">...     print(i, j)</span><br><span class="line">...</span><br><span class="line">0 a</span><br><span class="line">1 b</span><br><span class="line">2 c</span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; <span class="keyword">for</span> <span class="selector-tag">i</span>, j <span class="keyword">in</span> enumerate([<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]):</span><br><span class="line">...     print(<span class="selector-tag">i</span>, j)</span><br><span class="line">...</span><br><span class="line"><span class="number">0</span> a</span><br><span class="line"><span class="number">1</span> b</span><br><span class="line"><span class="number">2</span> c</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>同时遍历两个</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = [&apos;Pradeepto&apos;, &apos;Kushal&apos;]</span><br><span class="line">&gt;&gt;&gt; b = [&apos;OpenSUSE&apos;, &apos;Fedora&apos;]</span><br><span class="line">&gt;&gt;&gt; for x, y in zip(a, b):</span><br><span class="line">...     print(&quot;&#123;&#125; uses &#123;&#125;&quot;.format(x, y))</span><br><span class="line">Pradeepto uses OpenSUSE</span><br><span class="line">Kushal uses Fedora</span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; <span class="selector-tag">a</span> = [<span class="string">'Pradeepto'</span>, <span class="string">'Kushal'</span>]</span><br><span class="line">&gt;&gt;&gt; <span class="selector-tag">b</span> = [<span class="string">'OpenSUSE'</span>, <span class="string">'Fedora'</span>]</span><br><span class="line">&gt;&gt;&gt; <span class="keyword">for</span> x, y <span class="keyword">in</span> zip(<span class="selector-tag">a</span>, b):</span><br><span class="line">...     print(<span class="string">"&#123;&#125; uses &#123;&#125;"</span>.format(x, y))</span><br><span class="line">Pradeepto uses OpenSUSE</span><br><span class="line">Kushal uses Fedora</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><p>列表推导式 <code>a=[x**2 for x in range(10)]</code> 创建列表不产生副作用。</p>
@@ -473,7 +473,7 @@
 </ul>
 <h3 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h3><p>Python的元组与列表类似，不同之处在于元组的元素不能修改。<br>元组使用小括号，列表使用方括号。<br>元组创建很简单，只需要在括号中添加元素，并使用逗号隔开即可。</p>
 <p>元组与列表的区别，元组它的关键是不可变性。<br>如果在程序中以列表的形式传递一个对象的集合，它可能在任何地方改变；如果使用元组的话，则不能。元组提供了一种完整的约束。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tup1 = (a,)</span><br></pre></td></tr></table></figure>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tup<span class="number">1</span> = <span class="comment">(a,)</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="元组常用操作"><a href="#元组常用操作" class="headerlink" title="元组常用操作"></a>元组常用操作</h4><ul>
 <li>元组中只包含一个元素时，需要在元素后面添加逗号</li>
@@ -494,7 +494,7 @@
 <li>往字典中添加元素<code>dict.setdefault(key, default) ：data.setdefault(&#39;names&#39;, []).append(&#39;Ruby&#39;)</code></li>
 <li>字典删除操作</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">del dict[&apos;Name&apos;]; # 删除键是&apos;Name&apos;的条目</span><br><span class="line">dict.clear();     # 清空词典所有条目</span><br><span class="line">del dict ;        # 删除词典</span><br></pre></td></tr></table></figure>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">del <span class="keyword">dict['Name']; </span><span class="comment"># 删除键是'Name'的条目</span></span><br><span class="line"><span class="keyword">dict.clear(); </span>    <span class="comment"># 清空词典所有条目</span></span><br><span class="line">del <span class="keyword">dict </span><span class="comment">;        # 删除词典</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>不允许同一个键出现两次。创建时如果同一个键被赋值两次，后一个值会被记住。键不可用列表。</li>
@@ -504,7 +504,7 @@
 <li>大括号或 set() 函数可以用来创建集合</li>
 <li>想要创建空集合，你必须使用 set() 而不是 {}。后者用于创建空字典</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">basket = &#123;&apos;apple&apos;, &apos;orange&apos;, &apos;apple&apos;, &apos;pear&apos;, &apos;orange&apos;, &apos;banana&apos;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">basket</span> = &#123;<span class="string">'apple'</span>, <span class="string">'orange'</span>, <span class="string">'apple'</span>, <span class="string">'pear'</span>, <span class="string">'orange'</span>, <span class="string">'banana'</span>&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>单引号（’…’）或双引号（”…”） 引入字符串 无格式 不支持自动换行 需要在字符串内手动加入换行符 \n</p>
 <p>“””…””” 或 ‘’’…’’’ 可自动将换行符加入字符串内</p>
@@ -655,8 +655,6 @@
           
         
         
-        
-          
         
           
         

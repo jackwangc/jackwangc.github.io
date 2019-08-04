@@ -316,11 +316,11 @@
 <p>class 选择器在 HTML 中以 class 属性表示, 在 CSS 中，类选择器以一个点”.”号显示：</p>
 <p>所有拥有 class 为 center 的元素的属性 <code>.center {text-align:center;}</code> p 元素中 class 为 center 的属性<code>p.center {text-align:center;}</code></p>
 <h2 id="3-css-创建"><a href="#3-css-创建" class="headerlink" title="3. css 创建"></a>3. css 创建</h2><h3 id="3-1外部样式表"><a href="#3-1外部样式表" class="headerlink" title="3.1外部样式表"></a>3.1外部样式表</h3><p>当样式需要应用于很多页面时，外部样式表将是理想的选择。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;mystyle.css&quot;&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"mystyle.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <hr>
 <h3 id="3-2-内部样式表"><a href="#3-2-内部样式表" class="headerlink" title="3.2 内部样式表"></a>3.2 内部样式表</h3><p>当单个文档需要特殊的样式时，就应该使用内部样式表。你可以使用<code>&lt;style&gt;</code> 标签在文档头部定义内部样式表</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">hr &#123;color:sienna;&#125;</span><br><span class="line">p &#123;margin-left:20px;&#125;</span><br><span class="line">body &#123;background-image:url(&quot;images/back40.gif&quot;);&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css"><span class="selector-tag">hr</span> &#123;<span class="attribute">color</span>:sienna;&#125;</span></span><br><span class="line"><span class="css"><span class="selector-tag">p</span> &#123;<span class="attribute">margin-left</span>:<span class="number">20px</span>;&#125;</span></span><br><span class="line"><span class="css"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">"images/back40.gif"</span>);&#125;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <hr>
 <h3 id="3-3-内联样式"><a href="#3-3-内联样式" class="headerlink" title="3.3 内联样式"></a>3.3 内联样式</h3><p>要使用内联样式，你需要在相关的标签内使用样式（style）属性。Style 属性可以包含任何 CSS 属性。本例展示如何改变段落的颜色和左外边距</p>
@@ -651,8 +651,6 @@
           
         
         
-        
-          
         
           
         
